@@ -62,6 +62,7 @@
         <version.commons-lang3>3.3.2</version.commons-lang3>
         <version.httpclient>4.3.3</version.httpclient>
         <version.servlet>2.3</version.servlet>
+        <version.testng>6.9.6</version.testng>
 
         <!-- The plugins -->
         <version.compiler.plugin>3.1</version.compiler.plugin>
@@ -243,6 +244,14 @@
             <version>${version.servlet}</version>
         </dependency>
         <!-- End Javax.Servlet -->
+
+        <!-- testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${version.testng}</version>
+        </dependency>
+        <!-- testng -->
     </dependencies>
 
     <build>
