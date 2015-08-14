@@ -56,7 +56,7 @@
         <version.fastjson>1.2.6</version.fastjson>
         <version.dom4j>2.0.0-RC1</version.dom4j>
         <version.freemarker>2.3.23</version.freemarker>
-        <version.shiro></version.shiro>
+        <version.shiro>1.2.4</version.shiro>
         <version.bonecp>0.8.0.RELEASE</version.bonecp>
         <version.hibernateValidator>5.1.3.Final</version.hibernateValidator>
         <version.commons-lang3>3.3.2</version.commons-lang3>
@@ -183,6 +183,32 @@
             <version>${version.freemarker}</version>
         </dependency>
         <!-- freemarker -->
+
+        <!-- Shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${version.shiro}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${version.shiro}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${version.shiro}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${version.shiro}</version>
+        </dependency>
+        <!-- End Shiro -->
 
         <!-- bonecp -->
         <dependency>
