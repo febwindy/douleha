@@ -1,5 +1,9 @@
 package com.douleha.www.domain.model.role;
 
+import com.douleha.www.domain.model.authority.Authority;
+
+import java.util.List;
+
 /**
  * Created by ivan_ on 2015/8/14.
  */
@@ -10,6 +14,8 @@ public class Role {
     private String description;
     private Integer listOrder;
     private Boolean disabled;
+
+    private List<Authority> authorities;
 
     public Integer getRoleId() {
         return roleId;
@@ -49,5 +55,13 @@ public class Role {
 
     public void setDisabled(Boolean disabled) {
         this.disabled = disabled;
+    }
+
+    public List<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
     }
 }

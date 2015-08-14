@@ -1,6 +1,9 @@
 package com.douleha.www.domain.model.user;
 
+import com.douleha.www.domain.model.role.Role;
+
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by ivan_ on 2015/8/14.
@@ -18,6 +21,8 @@ public class User {
     private Date lastLoginTime;
     private Date createdTime;
     private String remark;
+
+    private List<Role> roles;
 
     public Integer getUserId() {
         return userId;
@@ -105,5 +110,13 @@ public class User {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

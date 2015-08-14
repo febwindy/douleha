@@ -1,5 +1,7 @@
 package com.douleha.www.domain.model.menu;
 
+import com.douleha.www.domain.model.menutype.MenuType;
+
 import java.util.Date;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Date;
 public class Menu {
 
     private Integer menuId;
-    private Integer typeId;
+    private MenuType menuType;
     private String menuName;
     private String menuUrl;
     private Integer listOrder;
@@ -23,12 +25,12 @@ public class Menu {
         this.menuId = menuId;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public MenuType getMenuType() {
+        return menuType;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setMenuType(MenuType menuType) {
+        this.menuType = menuType;
     }
 
     public String getMenuName() {
