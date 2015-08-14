@@ -1,29 +1,21 @@
 package com.douleha.www.persistence.mybatis.repository;
 
 import com.douleha.www.domain.model.menutype.IMenuTypeRepository;
+import com.douleha.www.persistence.mybatis.mapper.IMapper;
+import com.douleha.www.persistence.mybatis.mapper.IMenuTypeMapper;
+import com.douleha.www.persistence.mybatis.repository.general.AbstractRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by ivan_ on 2015/8/14.
  */
-public class MenuTypeRepository<MenuType, Integer> implements IMenuTypeRepository<MenuType, Integer> {
+public class MenuTypeRepository<MenuType, Integer> extends AbstractRepository<MenuType, Integer> implements IMenuTypeRepository<MenuType, Integer> {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public MenuType findById(Integer integer) {
-        return null;
-    }
-
-    @Override
-    public int save(MenuType entity) {
-        return 0;
-    }
-
-    @Override
-    public int update(MenuType entity) {
-        return 0;
-    }
-
-    @Override
-    public int delete(MenuType entity) {
-        return 0;
+    protected IMapper getMapper() {
+        return sqlSessionTemplate.getMapper(IMenuTypeMapper.class);
     }
 }

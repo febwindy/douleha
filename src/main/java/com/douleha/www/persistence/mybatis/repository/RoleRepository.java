@@ -1,31 +1,23 @@
 package com.douleha.www.persistence.mybatis.repository;
 
 import com.douleha.www.domain.model.role.IRoleRepository;
+import com.douleha.www.persistence.mybatis.mapper.IMapper;
+import com.douleha.www.persistence.mybatis.mapper.IRoleMapper;
+import com.douleha.www.persistence.mybatis.repository.general.AbstractRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 /**
  * Created by ivan_ on 2015/8/14.
  */
 @Repository("roleRepository")
-public class RoleRepository<Role, Integer> implements IRoleRepository<Role,Integer> {
+public class RoleRepository<Role, Integer> extends AbstractRepository<Role, Integer> implements IRoleRepository<Role,Integer> {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public Role findById(Integer integer) {
-        return null;
-    }
-
-    @Override
-    public int save(Role entity) {
-        return 0;
-    }
-
-    @Override
-    public int update(Role entity) {
-        return 0;
-    }
-
-    @Override
-    public int delete(Role entity) {
-        return 0;
+    protected IMapper getMapper() {
+        return sqlSessionTemplate.getMapper(IRoleMapper.class);
     }
 }

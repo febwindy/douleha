@@ -1,41 +1,30 @@
 package com.douleha.www.persistence.mybatis.repository;
 
 import com.douleha.www.domain.model.user.IUserRepository;
+import com.douleha.www.persistence.mybatis.mapper.IMapper;
 import com.douleha.www.persistence.mybatis.mapper.IUserMapper;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.douleha.www.persistence.mybatis.repository.general.AbstractRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by ivan_ on 2015/8/13.
  */
 @Repository("userRepository")
-public class UserRepository<User, Integer> implements IUserRepository<User, Integer> {
+public class UserRepository<User, Integer> extends AbstractRepository<User, Integer> implements IUserRepository<User, Integer> {
 
-    @Autowired
-    private SqlSessionTemplate sqlSessionTemplate;
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private IUserMapper<User, Integer> getMapper() {
+    @Override
+    protected IMapper getMapper() {
         return sqlSessionTemplate.getMapper(IUserMapper.class);
     }
 
-    @Override
-    public User findById(Integer id) {
-        return getMapper().findById(id);
+    public List<User> listUserByUsername(String username) {
+        return ((IUserMapper)getMapper()).listUserByUsername(username);
     }
 
-    @Override
-    public int save(User entity) {
-        return getMapper().save(entity);
-    }
-
-    @Override
-    public int update(User entity) {
-        return 0;
-    }
-
-    @Override
-    public int delete(User entity) {
-        return 0;
-    }
 }

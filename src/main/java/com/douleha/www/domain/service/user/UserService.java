@@ -5,6 +5,8 @@ import com.douleha.www.domain.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by ivan_ on 2015/8/13.
  */
@@ -20,7 +22,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public int save() {
-        return 0;
+    public List<User> listUserByUsername(String username) {
+        return userRepository.listUserByUsername(username);
     }
 }
