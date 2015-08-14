@@ -1,5 +1,6 @@
-package com.douleha.www.persistence.mybatis.repository.user;
+package com.douleha.www.persistence.mybatis.repository;
 
+import com.douleha.www.domain.model.user.IUserRepository;
 import com.douleha.www.persistence.mybatis.mapper.IUserMapper;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

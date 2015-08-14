@@ -1,7 +1,7 @@
 package com.douleha.www.domain.service.user;
 
-import com.douleha.www.domain.model.User;
-import com.douleha.www.persistence.mybatis.repository.user.IUserRepository;
+import com.douleha.www.domain.model.user.IUserRepository;
+import com.douleha.www.domain.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +21,6 @@ public class UserService implements IUserService {
 
     @Override
     public int save() {
-        User user = new User();
-        user.setId(222);
-        user.setName("bbb");
-        user.setAge(12);
-        return userRepository.save(user);
+        return 0;
     }
 }

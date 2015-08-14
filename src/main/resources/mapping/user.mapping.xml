@@ -6,7 +6,8 @@
     <select id="findById" resultType="com.douleha.www.domain.model.User">
         select * from user where id = #{id}
     </select>
-    <insert id="save" parameterType="com.douleha.www.domain.model.User">
+    <insert id="save" parameterType="com.douleha.www.domain.model.User"
+            useGeneratedKeys="true" keyProperty="id" databaseId="">
         insert into `user` (id, `name`, age)
                   values (#{id}, #{name}, #{age})
     </insert>
