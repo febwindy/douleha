@@ -7,8 +7,12 @@
         select * from douleha_user where userid = #{userId}
     </select>
 
-    <resultMap id="users" type="com.douleha.www.domain.model.user.User"/>
-    <select id="listUserByUsername" parameterType="String" resultMap="users">
+    <select id="findByUsername" resultType="com.douleha.www.domain.model.user.User">
         select * from douleha_user where username = #{username}
     </select>
+
+    <insert id="save" parameterType="com.douleha.www.domain.model.user.User" useGeneratedKeys="true" keyProperty="userid">
+        insert into douleha_user (userid, username, password, salt, nickname)
+                VALUES (#{userId}, #{username}, #{password}, #{salt}, #{nickname})
+    </insert>
 </mapper>

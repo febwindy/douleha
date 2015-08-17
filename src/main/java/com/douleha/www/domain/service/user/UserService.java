@@ -22,7 +22,12 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> listUserByUsername(String username) {
-        return userRepository.listUserByUsername(username);
+    public User findByUsername(String username) {
+        return (User) userRepository.findByUsername(username);
+    }
+
+    @Override
+    public int insert(User user) {
+        return userRepository.save(user);
     }
 }

@@ -1,5 +1,6 @@
 package com.douleha.www.domain.model.authority;
 
+import com.douleha.www.application.commons.Disabled;
 import com.douleha.www.domain.model.menu.Menu;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class Authority {
     private String authorityName;
     private String description;
     private Integer listOrder;
-    private Boolean disabled;
+    private Disabled disabled;
 
     private List<Menu> menus;
 
@@ -49,11 +50,11 @@ public class Authority {
         this.listOrder = listOrder;
     }
 
-    public Boolean getDisabled() {
+    public Disabled getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(Boolean disabled) {
+    public void setDisabled(Disabled disabled) {
         this.disabled = disabled;
     }
 

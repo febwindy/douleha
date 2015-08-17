@@ -63,6 +63,7 @@
         <version.httpclient>4.3.3</version.httpclient>
         <version.servlet>2.3</version.servlet>
         <version.testng>6.9.6</version.testng>
+        <version.codec>1.6</version.codec>
 
         <!-- The plugins -->
         <version.compiler.plugin>3.1</version.compiler.plugin>
@@ -278,6 +279,13 @@
             <version>${version.testng}</version>
         </dependency>
         <!-- testng -->
+
+        <!-- apache codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${version.codec}</version>
+        </dependency>
     </dependencies>
 
     <build>

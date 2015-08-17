@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface IUserRepository<T, ID> extends IRepository<T, ID> {
 
-    List<T> listUserByUsername(String username);
+    T findByUsername(String username);
 
 }

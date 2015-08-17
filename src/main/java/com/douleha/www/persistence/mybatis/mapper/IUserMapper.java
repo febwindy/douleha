@@ -7,6 +7,8 @@ import java.util.List;
  */
 public interface IUserMapper<User, Integer> extends IMapper<User, Integer> {
 
+    User findByUsername(String username);
+
     List<User> listUserByUsername(String username);
 
 }

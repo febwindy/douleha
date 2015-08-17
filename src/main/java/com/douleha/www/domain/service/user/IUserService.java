@@ -11,6 +11,8 @@ public interface IUserService {
 
     User findById(int id);
 
-    List<User> listUserByUsername(String username);
+    User findByUsername(String username);
+
+    int insert(User user);
 
 }

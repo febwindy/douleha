@@ -23,8 +23,9 @@ public class UserRepository<User, Integer> extends AbstractRepository<User, Inte
         return sqlSessionTemplate.getMapper(IUserMapper.class);
     }
 
-    public List<User> listUserByUsername(String username) {
-        return ((IUserMapper)getMapper()).listUserByUsername(username);
+    @Override
+    public User findByUsername(String username) {
+        return (User) ((IUserMapper)getMapper()).findByUsername(username);
     }
 
 }
