@@ -4,6 +4,8 @@ import com.douleha.www.persistence.mybatis.mapper.IMapper;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * Created by ivan_ on 2015/8/14.
  */
@@ -11,6 +13,11 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
 
     @Autowired
     protected SqlSessionTemplate sqlSessionTemplate;
+
+    @Override
+    public List<T> findAll() {
+        return this.getMapper().findAll();
+    }
 
     @Override
     public T findById(ID id) {

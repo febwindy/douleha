@@ -1,5 +1,8 @@
 package com.douleha.www.application.commons;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by ivan_ on 2015/8/17.
  */
@@ -29,5 +32,12 @@ public enum Disabled {
 
     public boolean isOnlyQuery() {
         return onlyQuery;
+    }
+
+    private static Map<Integer, Disabled> CACHE = new HashMap<Integer, Disabled>(Disabled.values().length * 2);
+    static {
+        for (Disabled disabled : Disabled.values()) {
+            CACHE.put(disabled.getValue(), disabled);
+        }
     }
 }

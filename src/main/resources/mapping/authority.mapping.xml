@@ -3,4 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.douleha.www.persistence.mybatis.mapper.IAuthorityMapper">
+
+    <resultMap id="authorityMap" type="com.douleha.www.domain.model.authority.Authority">
+        <result column="authorityid" property="authorityId"/>
+        <result column="authorityname" property="authorityName"/>
+        <result column="description" property="description"/>
+        <result column="listorder" property="listOrder"/>
+        <result column="disabled" property="disabled" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+        <association column="menuid" property="menu" javaType="com.douleha.www.domain.model.menu.Menu">
+            <result column="menuid" property="menuId"/>
+            <result column="menuname" property="menuName"/>
+            <result column="menuurl" property="menuUrl"/>
+            <result column="listorder" property="listOrder"/>
+            <result column="createdtime" property="createdTime"/>
+            <result column="remark" property="remark"/>
+        </association>
+    </resultMap>
+    <select id="findAll" resultMap="authorityMap">
+        SELECT * FROM douleha_authority b LEFT JOIN douleha_menu m ON b.authorityid = m.menuid
+    </select>
+
 </mapper>

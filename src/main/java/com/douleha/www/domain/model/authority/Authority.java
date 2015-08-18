@@ -16,7 +16,7 @@ public class Authority {
     private Integer listOrder;
     private Disabled disabled;
 
-    private List<Menu> menus;
+    private Menu menu;
 
     public Integer getAuthorityId() {
         return authorityId;
@@ -58,11 +58,11 @@ public class Authority {
         this.disabled = disabled;
     }
 
-    public List<Menu> getMenus() {
-        return menus;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 }

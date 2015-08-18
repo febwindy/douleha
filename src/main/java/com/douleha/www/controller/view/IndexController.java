@@ -3,6 +3,10 @@ package com.douleha.www.controller.view;
 import com.douleha.www.domain.model.user.User;
 import com.douleha.www.domain.service.user.IUserService;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +27,20 @@ public class IndexController {
 
     @RequestMapping("/")
     public ModelAndView index() throws Exception {
-        User user = userService.findById(1);
-        List<User> users = userService.listUserByUsername("liwenhe");
         return new ModelAndView("/index");
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login() throws Exception {
+        return new ModelAndView("/login");
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(String username, String password) throws Exception {
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        subject.login(token);
+        return new ModelAndView("redirect:/");
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -38,7 +53,7 @@ public class IndexController {
 
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 
-        String pwd = DigestUtils.md5Hex(password + uuid);
+        String pwd = new Md5Hash(password, uuid).toString();
 
         User user = new User();
         user.setUsername(username);
