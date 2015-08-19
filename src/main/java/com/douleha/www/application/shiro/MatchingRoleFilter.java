@@ -37,26 +37,4 @@ public class MatchingRoleFilter extends RolesAuthorizationFilter {
         return isHasRole;
     }
 
-//    @Override
-//    public boolean onPreHandle(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
-//
-//        String[] roles = (String[])mappedValue;
-//
-//        List<Authority> authorities = authorityService.findAll();
-//        Subject subject = getSubject(request, response);
-//
-//        if (!subject.isAuthenticated()) {
-//            onAccessDenied(request, response);
-//        }
-//        List<String> list = new ArrayList<String>();
-//        for (Authority authority : authorities) {
-//            for (Role role : authority.getRoles()) {
-//                list.add(role.getRoleName());
-//            }
-//        }
-//        boolean[] booleans = subject.hasRoles(list);
-//
-//        return super.onPreHandle(request, response, mappedValue);
-//    }
-
 }
