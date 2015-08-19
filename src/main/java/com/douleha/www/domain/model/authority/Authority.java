@@ -2,6 +2,7 @@ package com.douleha.www.domain.model.authority;
 
 import com.douleha.www.application.commons.Disabled;
 import com.douleha.www.domain.model.menu.Menu;
+import com.douleha.www.domain.model.role.Role;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class Authority {
     private Disabled disabled;
 
     private Menu menu;
+
+    private List<Role> roles;
 
     public Integer getAuthorityId() {
         return authorityId;
@@ -64,5 +67,13 @@ public class Authority {
 
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

@@ -10,9 +10,7 @@ import org.apache.shiro.web.filter.mgt.NamedFilterList;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Author: FuChuan <332553703@qq.com>
@@ -48,6 +46,19 @@ public class ShiroFilterChainManager {
         for (Authority authority : authorityList) {
             String authorityName = authority.getAuthorityName();
             Menu menu = authority.getMenu();
+            List<Role> roles = authority.getRoles();
+            StringBuilder sb = new StringBuilder();
+            for (int i=0; i < roles.size(); i++) {
+                if (roles.get(i).getDisabled() == Disabled.ENABLED) {
+                    sb.append(roles.get(i).getRoleName());
+                    if (i != roles.size() - 1) {
+                        sb.append(",");
+                    }
+                }
+            }
+            if (!DoulehaStringUtils.isEmpty(sb.toString())) {
+                filterChainManager.addToChain(menu.getMenuUrl(), "customRole", sb.toString());
+            }
             if (authority.getDisabled() == Disabled.ENABLED) {
                 if (!DoulehaStringUtils.isEmpty(authorityName) && null != menu) {
                     filterChainManager.addToChain(menu.getMenuUrl(), "perms", authorityName);

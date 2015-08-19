@@ -38,6 +38,8 @@
         <!--<property name="cacheManager" ref="cacheManager"/>-->
     </bean>
 
+    <bean id="matchingRoleFilter" class="com.douleha.www.application.shiro.MatchingRoleFilter"/>
+
     <bean id="filterChainManager" class="com.douleha.www.application.shiro.CustomDefaultFilterChainManager">
         <property name="loginUrl" value="/login"/>
         <property name="successUrl" value="/"/>
@@ -45,10 +47,14 @@
         <property name="defaultFilterChainDefinitions">
             <value>
                 / = authc
-                /login = anon
                 /logout = logout
                 /unauthorized = authc
             </value>
+        </property>
+        <property name="customFilters">
+            <map>
+                <entry key="customRole" value-ref="matchingRoleFilter"/>
+            </map>
         </property>
     </bean>
 

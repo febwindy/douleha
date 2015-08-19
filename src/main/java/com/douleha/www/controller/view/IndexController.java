@@ -27,6 +27,8 @@ public class IndexController {
 
     @RequestMapping("/")
     public ModelAndView index() throws Exception {
+        Subject subject = SecurityUtils.getSubject();
+        String username = subject.getPrincipal().toString();
         return new ModelAndView("/index");
     }
 
