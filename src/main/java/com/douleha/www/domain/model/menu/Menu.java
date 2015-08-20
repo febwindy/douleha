@@ -1,5 +1,6 @@
 package com.douleha.www.domain.model.menu;
 
+import com.douleha.www.domain.model.authority.Authority;
 import com.douleha.www.domain.model.menutype.MenuType;
 
 import java.util.Date;
@@ -16,6 +17,8 @@ public class Menu {
     private Integer listOrder;
     private Date createdTime;
     private String remark;
+
+    private Authority authority;
 
     public Integer getMenuId() {
         return menuId;
@@ -71,5 +74,13 @@ public class Menu {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Authority getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
     }
 }

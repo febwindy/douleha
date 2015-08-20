@@ -5,37 +5,37 @@
 <mapper namespace="com.douleha.www.persistence.mybatis.mapper.IAuthorityMapper">
 
     <resultMap id="roleMap" type="role">
-        <id column="roleid" property="roleId"/>
-        <result column="rolename" property="roleName"/>
-        <result column="role_disabled" property="disabled" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+        <id column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+        <result column="role_disabled" property="disabled" typeHandler="EnumOrdinalTypeHandler"/>
     </resultMap>
 
     <resultMap id="authorityMap" type="Authority">
-        <result column="authorityid" property="authorityId"/>
-        <result column="authorityname" property="authorityName"/>
-        <result column="authority_disabled" property="disabled" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
-        <association column="menuid" property="menu" javaType="Menu">
-            <result column="menuid" property="menuId"/>
-            <result column="menuname" property="menuName"/>
-            <result column="menuurl" property="menuUrl"/>
+        <result column="authority_id" property="authorityId"/>
+        <result column="authority_name" property="authorityName"/>
+        <result column="authority_disabled" property="disabled" typeHandler="EnumOrdinalTypeHandler"/>
+        <association column="menu_id" property="menu" javaType="Menu">
+            <result column="menu_id" property="menuId"/>
+            <result column="menu_name" property="menuName"/>
+            <result column="menu_url" property="menuUrl"/>
         </association>
         <collection property="roles" resultMap="roleMap"/>
     </resultMap>
     <select id="findAll" resultMap="authorityMap">
         SELECT
-            b.authorityid,
-            b.authorityname,
+            b.authority_id,
+            b.authority_name,
             b.disabled AS authority_disabled,
-            m.menuid,
-            m.menuname,
-            m.menuurl,
-            r.roleid,
-            r.rolename,
+            m.menu_id,
+            m.menu_name,
+            m.menu_url,
+            r.role_id,
+            r.role_name,
             r.disabled AS role_disabled
         FROM
             douleha_authority b
-        LEFT JOIN douleha_menu m ON b.authorityid = m.menuid
-        LEFT JOIN douleha_role r ON b.authorityid = r.roleid
+        LEFT JOIN douleha_menu m ON b.authority_id = m.menu_id
+        LEFT JOIN douleha_role r ON b.authority_id = r.role_id
     </select>
 
 </mapper>

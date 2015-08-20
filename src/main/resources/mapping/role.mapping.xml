@@ -3,17 +3,4 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.douleha.www.persistence.mybatis.mapper.IRoleMapper">
-    <resultMap id="roleMap" type="com.douleha.www.domain.model.role.Role">
-        <id property="roleId" column="roleid"/>
-        <association property="authorities" javaType="com.douleha.www.domain.model.authority.Authority">
-            <id property="authorityId" column="authorityid"/>
-            <result property="authorityName" column="authorityname"/>
-            <result property="description" column="description"/>
-            <result property="listOrder" column="listorder"/>
-            <result property="disabled" column="disabled"/>
-        </association>
-    </resultMap>
-    <select id="findAll" resultMap="roleMap">
-        select * from douleha_role r left join douleha_authority a on r.roleid = a.roleid
-    </select>
 </mapper>
