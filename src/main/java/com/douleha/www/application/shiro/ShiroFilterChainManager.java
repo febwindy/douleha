@@ -1,6 +1,6 @@
 package com.douleha.www.application.shiro;
 
-import com.douleha.www.application.commons.Disabled;
+import com.douleha.www.application.commons.enumtype.Disabled;
 import com.douleha.www.application.util.DoulehaStringUtils;
 import com.douleha.www.domain.model.authority.Authority;
 import com.douleha.www.domain.model.menu.Menu;

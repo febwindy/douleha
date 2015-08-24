@@ -1,4 +1,4 @@
-package com.douleha.www.application.commons;
+package com.douleha.www.application.commons.enumtype;
 
 import java.util.HashMap;
 import java.util.Map;

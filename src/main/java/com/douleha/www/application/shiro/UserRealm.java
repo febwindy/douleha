@@ -1,6 +1,6 @@
 package com.douleha.www.application.shiro;
 
-import com.douleha.www.application.commons.Disabled;
+import com.douleha.www.application.commons.enumtype.Disabled;
 import com.douleha.www.domain.model.authority.Authority;
 import com.douleha.www.domain.model.role.Role;
 import com.douleha.www.domain.model.user.User;
@@ -11,7 +11,6 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
