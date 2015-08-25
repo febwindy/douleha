@@ -2,13 +2,17 @@ package com.douleha.www.controller.view;
 
 import com.douleha.www.application.commons.command.login.LoginCommand;
 import com.douleha.www.controller.shared.web.BaseController;
+import com.douleha.www.controller.shared.web.JsonMessage;
 import com.douleha.www.domain.model.user.User;
 import com.douleha.www.domain.service.user.IUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,6 +20,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -28,6 +33,8 @@ import java.util.UUID;
  */
 @Controller
 public class IndexController extends BaseController {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private IUserService userService;
@@ -47,21 +54,23 @@ public class IndexController extends BaseController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login(@Valid @ModelAttribute("login")LoginCommand command, BindingResult bindingResult, Locale locale) throws Exception {
+    @ResponseBody
+    public JsonMessage login(@Valid @ModelAttribute("login")LoginCommand command, BindingResult bindingResult, Locale locale) throws Exception {
 
         if (bindingResult.hasErrors()) {
-            List<ObjectError> errors = bindingResult.getAllErrors();
-            StringBuilder sb = new StringBuilder();
-            for (ObjectError error : errors) {
-                sb.append(messageResource.getMessage(error.getDefaultMessage(), null, locale));
-            }
-            return new ModelAndView("redirect:/login");
+            return new JsonMessage(JsonMessage.JsonMessageType.FAILED, getErrorInfo(bindingResult, locale));
         }
 
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(command.getUsername(), command.getPassword());
-        subject.login(token);
-        return new ModelAndView("redirect:/");
+        try {
+            subject.login(token);
+        } catch (AuthenticationException e) {
+            logger.error(e.getMessage(), e);
+            return new JsonMessage(JsonMessage.JsonMessageType.FAILED, this.getMessage("Login.user.UnknownAccountException", locale));
+        }
+
+        return new JsonMessage(JsonMessage.JsonMessageType.SUCCESS, null);
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
