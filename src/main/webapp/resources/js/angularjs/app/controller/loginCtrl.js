@@ -12,7 +12,7 @@ define(['app'], function(app) {
             }
             userService.login({username:$scope.username, password:$scope.password})
                 .then(function() {
-
+                    //TODO login successfully
                 }
                 ,function(data) {
                     $scope.errorMsg = data;
