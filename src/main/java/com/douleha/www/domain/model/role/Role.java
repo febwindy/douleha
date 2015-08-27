@@ -1,7 +1,7 @@
 package com.douleha.www.domain.model.role;
 
-import com.douleha.www.utils.type.model.Disabled;
 import com.douleha.www.domain.model.authority.Authority;
+import com.douleha.www.utils.type.model.Disabled;
 
 import java.util.List;
 

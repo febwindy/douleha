@@ -5,8 +5,6 @@ import com.douleha.www.domain.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 /**
  * Created by ivan_ on 2015/8/13.
  */

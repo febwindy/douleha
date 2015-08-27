@@ -1,10 +1,10 @@
 package com.douleha.www.utils.shiro;
 
-import com.douleha.www.utils.type.model.Disabled;
 import com.douleha.www.domain.model.authority.Authority;
 import com.douleha.www.domain.model.role.Role;
 import com.douleha.www.domain.model.user.User;
 import com.douleha.www.domain.service.user.IUserService;
+import com.douleha.www.utils.type.model.Disabled;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;

@@ -1,16 +1,18 @@
 package com.douleha.www.utils.shiro;
 
-import com.douleha.www.utils.type.model.Disabled;
 import com.douleha.www.domain.model.authority.Authority;
 import com.douleha.www.domain.model.menu.Menu;
 import com.douleha.www.domain.model.role.Role;
 import com.douleha.www.domain.service.authority.IAuthorityService;
+import com.douleha.www.utils.type.model.Disabled;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.web.filter.mgt.NamedFilterList;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Author: FuChuan <332553703@qq.com>
