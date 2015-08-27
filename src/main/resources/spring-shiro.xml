@@ -15,14 +15,14 @@
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.ServletContainerSessionManager"/>
 
     <!-- 凭证匹配器 -->
-    <bean id="credentialsMatcher" class="com.douleha.www.application.shiro.RetryLimitHashedCredentialsMatcher">
+    <bean id="credentialsMatcher" class="com.douleha.www.utils.shiro.RetryLimitHashedCredentialsMatcher">
         <constructor-arg ref="cacheManager"/>
         <property name="hashAlgorithmName" value="md5"/>
         <!--<property name="hashIterations" value="2"/>-->
         <property name="storedCredentialsHexEncoded" value="true"/>
     </bean>
 
-    <bean id="userRealm" class="com.douleha.www.application.shiro.UserRealm">
+    <bean id="userRealm" class="com.douleha.www.utils.shiro.UserRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="cachingEnabled" value="false"/>
         <property name="authenticationCachingEnabled" value="true"/>
@@ -38,9 +38,9 @@
         <!--<property name="cacheManager" ref="cacheManager"/>-->
     </bean>
 
-    <bean id="matchingRoleFilter" class="com.douleha.www.application.shiro.MatchingRoleFilter"/>
+    <bean id="matchingRoleFilter" class="com.douleha.www.utils.shiro.MatchingRoleFilter"/>
 
-    <bean id="filterChainManager" class="com.douleha.www.application.shiro.CustomDefaultFilterChainManager">
+    <bean id="filterChainManager" class="com.douleha.www.utils.shiro.CustomDefaultFilterChainManager">
         <property name="loginUrl" value="/login"/>
         <property name="successUrl" value="/"/>
         <property name="unauthorizedUrl" value="/unauthorized"/>
@@ -58,14 +58,14 @@
         </property>
     </bean>
 
-    <bean id="filterChainResolver" class="com.douleha.www.application.shiro.CustomPathMatchingFilterChainResolver">
+    <bean id="filterChainResolver" class="com.douleha.www.utils.shiro.CustomPathMatchingFilterChainResolver">
         <property name="customDefaultFilterChainManager" ref="filterChainManager"/>
     </bean>
 
-    <bean id="shiroFilterChainManager" class="com.douleha.www.application.shiro.ShiroFilterChainManager"/>
+    <bean id="shiroFilterChainManager" class="com.douleha.www.utils.shiro.ShiroFilterChainManager"/>
 
     <!--shiro过滤器配置，bean的id值须与web中的filter-name的值相同-->
-    <bean id="shiroFilter" class="com.douleha.www.application.shiro.ShiroFilterFactoryManagerBean">
+    <bean id="shiroFilter" class="com.douleha.www.utils.shiro.ShiroFilterFactoryManagerBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="filterChainResolver" ref="filterChainResolver"/>
     </bean>

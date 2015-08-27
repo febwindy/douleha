@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>1</title>
-  </head>
-  <body>
-        1
-  </body>
-</html>

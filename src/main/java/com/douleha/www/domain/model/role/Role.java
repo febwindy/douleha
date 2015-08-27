@@ -1,6 +1,6 @@
 package com.douleha.www.domain.model.role;
 
-import com.douleha.www.application.commons.enumtype.Disabled;
+import com.douleha.www.utils.type.model.Disabled;
 import com.douleha.www.domain.model.authority.Authority;
 
 import java.util.List;

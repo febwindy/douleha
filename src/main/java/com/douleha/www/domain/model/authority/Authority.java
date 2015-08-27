@@ -1,6 +1,6 @@
 package com.douleha.www.domain.model.authority;
 
-import com.douleha.www.application.commons.enumtype.Disabled;
+import com.douleha.www.utils.type.model.Disabled;
 import com.douleha.www.domain.model.menu.Menu;
 import com.douleha.www.domain.model.role.Role;
 

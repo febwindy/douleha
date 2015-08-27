@@ -33,8 +33,9 @@
                 </property>
                 <property name="features">
                     <list>
-                        <value>WriteMapNullValue</value>
+                        <!--<value>WriteMapNullValue</value>-->
                         <value>WriteDateUseDateFormat</value>
+                        <value>PrettyFormat</value>
                         <!--<value>QuoteFieldNames</value>-->
                     </list>
                 </property>
@@ -45,36 +46,37 @@
     
     <context:component-scan base-package="com.douleha.www">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
-    <bean id="viewNameTranslator" class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator">
-        <!-- 默认ISO-8859-1 decode 禁用-->
-        <property name="urlDecode" value="false"/>
-    </bean>
+    <!--<bean id="viewNameTranslator" class="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator">-->
+        <!--&lt;!&ndash; 默认ISO-8859-1 decode 禁用&ndash;&gt;-->
+        <!--<property name="urlDecode" value="false"/>-->
+    <!--</bean>-->
 
-    <!-- FreeMarker视图解析 在这里配置后缀名ftl和视图解析器。。 -->
-    <bean id="freemarkerConfiguration"
-          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="location" value="classpath:freemarker.properties"/>
-    </bean>
+    <!--&lt;!&ndash; FreeMarker视图解析 在这里配置后缀名ftl和视图解析器。。 &ndash;&gt;-->
+    <!--<bean id="freemarkerConfiguration"-->
+          <!--class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
+        <!--<property name="location" value="classpath:freemarker.properties"/>-->
+    <!--</bean>-->
 
-    <bean id="freemarkerConfig"
-          class="com.douleha.www.application.util.freemarker.FreeMarkerConfigurerExtension">
-        <property name="freemarkerSettings" ref="freemarkerConfiguration"/>
-        <property name="templateLoaderPath" value="/WEB-INF/static/templates/"/>
-        <property name="defaultEncoding" value="UTF-8"/>
-    </bean>
+    <!--<bean id="freemarkerConfig"-->
+          <!--class="com.douleha.www.utils.freemarker.FreeMarkerConfigurerExtension">-->
+        <!--<property name="freemarkerSettings" ref="freemarkerConfiguration"/>-->
+        <!--<property name="templateLoaderPath" value="/WEB-INF/static/templates/"/>-->
+        <!--<property name="defaultEncoding" value="UTF-8"/>-->
+    <!--</bean>-->
 
-    <bean id="freemarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
-        <property name="contentType" value="text/html; charset=UTF-8"/>
-        <property name="cache" value="true"/>
-        <property name="prefix" value=""/>
-        <property name="suffix" value=".html"/>
-        <property name="order" value="0"/>
-        <property name="requestContextAttribute" value="request"/>
-    </bean>
+    <!--<bean id="freemarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">-->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>-->
+        <!--<property name="contentType" value="text/html; charset=UTF-8"/>-->
+        <!--<property name="cache" value="true"/>-->
+        <!--<property name="prefix" value=""/>-->
+        <!--<property name="suffix" value=".html"/>-->
+        <!--<property name="order" value="0"/>-->
+        <!--<property name="requestContextAttribute" value="request"/>-->
+    <!--</bean>-->
 
 </beans>
