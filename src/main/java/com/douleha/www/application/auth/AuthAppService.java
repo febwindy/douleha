@@ -1,8 +1,11 @@
 package com.douleha.www.application.auth;
 
 import com.douleha.www.application.auth.command.LoginCommand;
+import com.douleha.www.application.auth.representation.LoggedRepresentation;
 import com.douleha.www.controller.exception.InvalidRequestException;
 import com.douleha.www.controller.exception.UnauthorizedException;
+import com.douleha.www.domain.model.user.User;
+import com.douleha.www.utils.mapping.IMappingService;
 import com.douleha.www.utils.type.api.ApiResponse;
 import com.douleha.www.utils.type.api.ApiReturnCode;
 import org.apache.commons.lang3.StringUtils;
@@ -10,6 +13,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("authAppService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 public class AuthAppService implements IAuthAppService {
+
+    @Autowired
+    private IMappingService mappingService;
 
     @Override
     public ApiResponse login(LoginCommand command) {
@@ -40,6 +47,9 @@ public class AuthAppService implements IAuthAppService {
             throw new UnauthorizedException(new ApiResponse(ApiReturnCode.ERROR_10002, ApiReturnCode.ERROR_10002.getName()));
         }
 
-        return new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName());
+        User user = (User) subject.getPrincipal();
+        LoggedRepresentation representation = mappingService.map(user, LoggedRepresentation.class, false);
+
+        return new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName(), representation);
     }
 }

@@ -64,6 +64,7 @@
         <version.servlet>2.3</version.servlet>
         <version.testng>6.9.6</version.testng>
         <version.codec>1.6</version.codec>
+        <version.orika>1.4.6</version.orika>
 
         <!-- The plugins -->
         <version.compiler.plugin>3.1</version.compiler.plugin>
@@ -286,6 +287,14 @@
             <artifactId>commons-codec</artifactId>
             <version>${version.codec}</version>
         </dependency>
+
+        <!-- orika -->
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>${version.orika}</version>
+        </dependency>
+        <!-- orika -->
     </dependencies>
 
     <build>
