@@ -40,11 +40,15 @@ public class AuthAppService implements IAuthAppService {
         }
 
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(command.getUsername(), command.getPassword());
-        try {
-            subject.login(token);
-        } catch (AuthenticationException e) {
-            throw new UnauthorizedException(new ApiResponse(ApiReturnCode.ERROR_10002, ApiReturnCode.ERROR_10002.getName()));
+        if (!subject.isAuthenticated()) {
+            UsernamePasswordToken token = new UsernamePasswordToken(command.getUsername(), command.getPassword());
+            try {
+                subject.login(token);
+            } catch (AuthenticationException e) {
+                throw new UnauthorizedException(new ApiResponse(ApiReturnCode.ERROR_10002, ApiReturnCode.ERROR_10002.getName()));
+            }
+        } else {
+            throw new InvalidRequestException(new ApiResponse(ApiReturnCode.ERROR_10005, ApiReturnCode.ERROR_10005.getName()));
         }
 
         User user = (User) subject.getPrincipal();

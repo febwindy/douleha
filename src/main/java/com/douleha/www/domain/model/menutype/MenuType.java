@@ -1,11 +1,12 @@
 package com.douleha.www.domain.model.menutype;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by ivan_ on 2015/8/14.
  */
-public class MenuType {
+public class MenuType implements Serializable {
 
     private Integer typeId;
     private String typeName;

@@ -4,12 +4,13 @@ import com.douleha.www.domain.model.menu.Menu;
 import com.douleha.www.domain.model.role.Role;
 import com.douleha.www.utils.type.model.Disabled;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by ivan_ on 2015/8/14.
  */
-public class Authority {
+public class Authority implements Serializable {
 
     private Integer authorityId;
     private String authorityName;

@@ -2,13 +2,14 @@ package com.douleha.www.domain.model.user;
 
 import com.douleha.www.domain.model.role.Role;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by ivan_ on 2015/8/14.
  */
-public class User {
+public class User implements Serializable {
 
     private Integer userId;
     private String username;

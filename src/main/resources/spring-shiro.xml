@@ -41,16 +41,8 @@
     <bean id="matchingRoleFilter" class="com.douleha.www.utils.shiro.MatchingRoleFilter"/>
 
     <bean id="filterChainManager" class="com.douleha.www.utils.shiro.CustomDefaultFilterChainManager">
-        <property name="loginUrl" value="/login"/>
-        <property name="successUrl" value="/"/>
-        <property name="unauthorizedUrl" value="/unauthorized"/>
-        <property name="defaultFilterChainDefinitions">
-            <value>
-                / = authc
-                /logout = logout
-                /unauthorized = authc
-            </value>
-        </property>
+        <property name="loginUrl" value="/v1/auth/login"/>
+        <property name="unauthorizedUrl" value="/v1/auth/unauthorized"/>
         <property name="customFilters">
             <map>
                 <entry key="customRole" value-ref="matchingRoleFilter"/>

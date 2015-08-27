@@ -28,7 +28,7 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
-        String username = (String) principals.getPrimaryPrincipal();
+        String username = ((User) principals.getPrimaryPrincipal()).getUsername();
         User user = userService.findByUsername(username);
 
         if (null == user) {

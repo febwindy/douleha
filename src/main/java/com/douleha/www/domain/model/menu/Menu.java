@@ -3,12 +3,13 @@ package com.douleha.www.domain.model.menu;
 import com.douleha.www.domain.model.authority.Authority;
 import com.douleha.www.domain.model.menutype.MenuType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by ivan_ on 2015/8/14.
  */
-public class Menu {
+public class Menu implements Serializable {
 
     private Integer menuId;
     private MenuType menuType;

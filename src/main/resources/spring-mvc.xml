@@ -27,15 +27,15 @@
                 <property name="supportedMediaTypes">
                     <list>
                         <value>application/json;charset=UTF-8</value>
-                        <value>text/html;charset=UTF-8</value>
+                        <!--<value>text/html;charset=UTF-8</value>-->
                         <!-- For sb IE download -->
                     </list>
                 </property>
                 <property name="features">
                     <list>
                         <!--<value>WriteMapNullValue</value>-->
-                        <value>WriteDateUseDateFormat</value>
                         <value>PrettyFormat</value>
+                        <value>WriteDateUseDateFormat</value>
                         <!--<value>QuoteFieldNames</value>-->
                     </list>
                 </property>
