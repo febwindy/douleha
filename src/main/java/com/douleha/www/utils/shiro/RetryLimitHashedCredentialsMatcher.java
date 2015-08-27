@@ -10,9 +10,7 @@ import org.apache.shiro.cache.CacheManager;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Author: EthanTu <ethan.l.tu@gmail.com>
- * Date: 5/28/14
- * Time: 3:14 PM
+ * Created by ivan_ on 2015/8/18.
  */
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
 

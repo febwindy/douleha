@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Author: FuChuan <332553703@qq.com>
- * Date: 2015/2/2
- * Time: 20:47
+ * Created by ivan_ on 2015/8/18.
  */
 public class ShiroFilterChainManager {
 

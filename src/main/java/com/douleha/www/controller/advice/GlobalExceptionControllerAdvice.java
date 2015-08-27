@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Created by ivan_ on 2015/8/26.
+ * 控制器增强
+ * 用于处理异常，并根据异常返回不同的httpStatus
  */
 @ControllerAdvice
 public class GlobalExceptionControllerAdvice extends BaseApiController {

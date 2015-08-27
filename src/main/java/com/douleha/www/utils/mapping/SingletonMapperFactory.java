@@ -5,6 +5,7 @@ import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 /**
  * Created by ivan_ on 2015/8/27.
+ * 此内采用单例模式，目的是为了获取orika的MapperFactory对象
  */
 public class SingletonMapperFactory {
 

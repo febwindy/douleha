@@ -10,7 +10,7 @@ import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Created by MacJia on 2015/2/12.
+ * Created by ivan_ on 2015/8/18.
  */
 public class ShiroFilterFactoryManagerBean extends ShiroFilterFactoryBean {
 

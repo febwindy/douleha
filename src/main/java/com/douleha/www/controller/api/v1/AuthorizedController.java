@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by ivan_ on 2015/8/27.
+ * 用户授权api接口
  */
 @Controller
 @RequestMapping("/v1/auth")

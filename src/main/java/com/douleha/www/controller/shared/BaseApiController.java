@@ -18,10 +18,21 @@ public abstract class BaseApiController {
         return this.getMessage(code, null, locale);
     }
 
+    /**
+     * 通过code解析message.properties中的内容
+     * @param code
+     * @param params
+     * @param locale
+     * @return
+     */
     protected String getMessage(String code, Object[] params, Locale locale) {
         return messageSource.getMessage(code, params, locale);
     }
 
+    /**
+     * 由于ApiResponse中的name值配置在message.properties中,因此通过此方法可解析出用记可以理解的内容
+     * @param response
+     */
     protected void convertToReadableForApiResponse(ApiResponse response) {
         String message = response.getMessage();
         try {

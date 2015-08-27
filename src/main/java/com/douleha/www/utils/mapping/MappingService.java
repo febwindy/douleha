@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * Created by ivan_ on 2015/8/27.
+ * function:bean copy bean
  */
 public class MappingService implements ApplicationContextAware, IMappingService {
 
@@ -63,10 +64,18 @@ public class MappingService implements ApplicationContextAware, IMappingService 
         return boundMapperFacade;
     }
 
+    /**
+     * 注册converter
+     * @param converter
+     */
     public void addConverter(final Converter<?, ?> converter) {
         SINGLETON_MAPPER_FACTORY.instance().getConverterFactory().registerConverter(converter);
     }
 
+    /**
+     * 注册mapper
+     * @param mapper
+     */
     public void addMapper(final Mapper mapper) {
         SINGLETON_MAPPER_FACTORY.instance().classMap(mapper.getAType(), mapper.getBType())
                 .byDefault()

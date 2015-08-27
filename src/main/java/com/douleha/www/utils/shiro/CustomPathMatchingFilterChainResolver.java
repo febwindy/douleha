@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by MacJia on 2015/2/12.
+ * Created by ivan_ on 2015/8/18.
  */
 public class CustomPathMatchingFilterChainResolver extends PathMatchingFilterChainResolver {
 
