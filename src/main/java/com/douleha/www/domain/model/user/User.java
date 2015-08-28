@@ -1,37 +1,28 @@
 package com.douleha.www.domain.model.user;
 
 import com.douleha.www.domain.model.role.Role;
+import com.douleha.www.utils.type.model.AbstractId;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by ivan_ on 2015/8/14.
  */
-public class User implements Serializable {
+public class User extends AbstractId {
 
-    private Integer userId;
     private String username;
     private String password;
-    private String salt;
     private String nickname;
-    private Boolean sex;
     private String realName;
+    private String salt;
+    private Boolean sex;
     private String lastLoginIp;
     private Date lastLoginTime;
     private Date createdTime;
     private String remark;
 
     private List<Role> roles;
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 
     public String getUsername() {
         return username;

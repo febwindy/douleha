@@ -1,6 +1,6 @@
 package com.douleha.www.utils.shiro;
 
-import com.douleha.www.domain.model.authority.Authority;
+import com.douleha.www.domain.model.permission.Permission;
 import com.douleha.www.domain.model.role.Role;
 import com.douleha.www.domain.model.user.User;
 import com.douleha.www.domain.service.user.IUserService;
@@ -66,7 +66,7 @@ public class UserRealm extends AuthorizingRealm {
         List<Role> roleList = user.getRoles();
         for (Role role : roleList) {
             if (role.getDisabled() == Disabled.ENABLED) {
-                roles.add(role.getRoleName());
+                roles.add(role.getName());
             }
         }
         return roles;
@@ -77,10 +77,10 @@ public class UserRealm extends AuthorizingRealm {
         List<Role> roleList = user.getRoles();
         for (Role role : roleList) {
             if (role.getDisabled() == Disabled.ENABLED) {
-                List<Authority> authorityList = role.getAuthorities();
-                for (Authority authority : authorityList) {
-                    if (authority.getDisabled() == Disabled.ENABLED) {
-                        authorities.add(authority.getAuthorityName());
+                List<Permission> permissionList = role.getPermissions();
+                for (Permission permission : permissionList) {
+                    if (permission.getDisabled() == Disabled.ENABLED) {
+                        authorities.add(permission.getName());
                     }
                 }
             }

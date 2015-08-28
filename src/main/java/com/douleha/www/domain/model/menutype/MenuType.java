@@ -1,56 +1,28 @@
 package com.douleha.www.domain.model.menutype;
 
-import java.io.Serializable;
-import java.util.Date;
+import com.douleha.www.utils.type.model.AbstractId;
 
 /**
- * Created by ivan_ on 2015/8/14.
+ * Created by ivan_ on 2015/8/28.
  */
-public class MenuType implements Serializable {
+public class MenuType extends AbstractId {
 
-    private Integer typeId;
-    private String typeName;
-    private Integer listOrder;
-    private Date createdTime;
-    private String remark;
+    private String name;
+    private String description;
 
-    public Integer getTypeId() {
-        return typeId;
+    public String getName() {
+        return name;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
-    }
-
-    public Integer getListOrder() {
-        return listOrder;
-    }
-
-    public void setListOrder(Integer listOrder) {
-        this.listOrder = listOrder;
-    }
-
-    public Date getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

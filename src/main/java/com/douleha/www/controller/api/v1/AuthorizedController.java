@@ -2,7 +2,6 @@ package com.douleha.www.controller.api.v1;
 
 import com.douleha.www.application.auth.IAuthAppService;
 import com.douleha.www.application.auth.command.LoginCommand;
-import com.douleha.www.controller.exception.InternalServerException;
 import com.douleha.www.controller.exception.InvalidRequestException;
 import com.douleha.www.controller.exception.UnauthorizedException;
 import com.douleha.www.controller.shared.BaseApiController;

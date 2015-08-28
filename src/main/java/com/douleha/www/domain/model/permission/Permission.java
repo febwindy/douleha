@@ -1,6 +1,7 @@
-package com.douleha.www.domain.model.role;
+package com.douleha.www.domain.model.permission;
 
-import com.douleha.www.domain.model.permission.Permission;
+import com.douleha.www.domain.model.role.Role;
+import com.douleha.www.domain.model.url.Url;
 import com.douleha.www.utils.type.model.AbstractId;
 import com.douleha.www.utils.type.model.Disabled;
 
@@ -9,13 +10,14 @@ import java.util.List;
 /**
  * Created by ivan_ on 2015/8/14.
  */
-public class Role extends AbstractId {
+public class Permission extends AbstractId {
 
     private String name;
     private String description;
     private Disabled disabled;
     private Integer sort;
-    private List<Permission> permissions;
+    private List<Role> roles;
+    private Url url;
 
     public String getName() {
         return name;
@@ -49,11 +51,19 @@ public class Role extends AbstractId {
         this.sort = sort;
     }
 
-    public List<Permission> getPermissions() {
-        return permissions;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setPermissions(List<Permission> permissions) {
-        this.permissions = permissions;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Url getUrl() {
+        return url;
+    }
+
+    public void setUrl(Url url) {
+        this.url = url;
     }
 }

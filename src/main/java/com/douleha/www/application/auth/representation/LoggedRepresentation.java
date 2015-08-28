@@ -1,7 +1,5 @@
 package com.douleha.www.application.auth.representation;
 
-import java.util.Date;
-
 /**
  * Created by ivan_ on 2015/8/27.
  */

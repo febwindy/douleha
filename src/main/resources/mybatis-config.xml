@@ -22,7 +22,7 @@
         <!-- entity -->
         <typeAlias type="com.douleha.www.domain.model.role.Role" alias="Role"/>
         <typeAlias type="com.douleha.www.domain.model.user.User" alias="User"/>
-        <typeAlias type="com.douleha.www.domain.model.authority.Authority" alias="Authority"/>
+        <typeAlias type="com.douleha.www.domain.model.permission.Permission" alias="Authority"/>
         <typeAlias type="com.douleha.www.domain.model.menu.Menu" alias="Menu"/>
         <typeAlias type="com.douleha.www.domain.model.menutype.MenuType" alias="MenuType"/>
 

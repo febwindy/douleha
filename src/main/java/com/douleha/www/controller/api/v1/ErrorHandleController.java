@@ -1,7 +1,6 @@
 package com.douleha.www.controller.api.v1;
 
 import com.douleha.www.controller.exception.InternalServerException;
-import com.douleha.www.controller.exception.InvalidRequestException;
 import com.douleha.www.controller.exception.NotFoundException;
 import com.douleha.www.utils.type.api.ApiResponse;
 import com.douleha.www.utils.type.api.ApiReturnCode;

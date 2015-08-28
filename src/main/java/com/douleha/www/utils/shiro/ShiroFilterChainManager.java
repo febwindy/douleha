@@ -1,8 +1,8 @@
 package com.douleha.www.utils.shiro;
 
-import com.douleha.www.domain.model.authority.Authority;
-import com.douleha.www.domain.model.menu.Menu;
+import com.douleha.www.domain.model.permission.Permission;
 import com.douleha.www.domain.model.role.Role;
+import com.douleha.www.domain.model.url.Url;
 import com.douleha.www.domain.service.authority.IAuthorityService;
 import com.douleha.www.utils.type.model.Disabled;
 import org.apache.commons.lang3.StringUtils;
@@ -40,28 +40,28 @@ public class ShiroFilterChainManager {
             filterChainManager.getFilterChains().putAll(defaultFilterChains);
         }
 
-        List<Authority> authorityList = authorityService.findAll();
+        List<Permission> permissionList = authorityService.findAll();
 
         //2、循环URL Filter 注册filter chain
-        for (Authority authority : authorityList) {
-            String authorityName = authority.getAuthorityName();
-            Menu menu = authority.getMenu();
-            List<Role> roles = authority.getRoles();
+        for (Permission permission : permissionList) {
+            String permissionName = permission.getName();
+            Url url = permission.getUrl();
+            List<Role> roles = permission.getRoles();
             StringBuilder sb = new StringBuilder();
             for (int i=0; i < roles.size(); i++) {
                 if (roles.get(i).getDisabled() == Disabled.ENABLED) {
-                    sb.append(roles.get(i).getRoleName());
+                    sb.append(roles.get(i).getName());
                     if (i != roles.size() - 1) {
                         sb.append(",");
                     }
                 }
             }
             if (!StringUtils.isEmpty(sb.toString())) {
-                filterChainManager.addToChain(menu.getMenuUrl(), "customRole", sb.toString());
+                filterChainManager.addToChain(url.getName(), "customRole", sb.toString());
             }
-            if (authority.getDisabled() == Disabled.ENABLED) {
-                if (!StringUtils.isEmpty(authorityName) && null != menu) {
-                    filterChainManager.addToChain(menu.getMenuUrl(), "perms", authorityName);
+            if (permission.getDisabled() == Disabled.ENABLED) {
+                if (!StringUtils.isEmpty(permissionName) && null != url) {
+                    filterChainManager.addToChain(url.getName(), "perms", permissionName);
                 }
             }
         }

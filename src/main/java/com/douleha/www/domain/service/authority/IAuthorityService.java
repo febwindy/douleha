@@ -1,6 +1,6 @@
 package com.douleha.www.domain.service.authority;
 
-import com.douleha.www.domain.model.authority.Authority;
+import com.douleha.www.domain.model.permission.Permission;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface IAuthorityService {
 
-    List<Authority> findAll();
+    List<Permission> findAll();
 
 }

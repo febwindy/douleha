@@ -1,7 +1,7 @@
 package com.douleha.www.domain.service.authority;
 
-import com.douleha.www.domain.model.authority.Authority;
-import com.douleha.www.domain.model.authority.IAuthorityRepository;
+import com.douleha.www.domain.model.permission.IPermissionRepository;
+import com.douleha.www.domain.model.permission.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +14,10 @@ import java.util.List;
 public class AuthorityService implements IAuthorityService {
 
     @Autowired
-    private IAuthorityRepository authorityRepository;
+    private IPermissionRepository authorityRepository;
 
     @Override
-    public List<Authority> findAll() {
+    public List<Permission> findAll() {
         return authorityRepository.findAll();
     }
 }
