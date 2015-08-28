@@ -22,9 +22,12 @@
         <!-- entity -->
         <typeAlias type="com.douleha.www.domain.model.role.Role" alias="Role"/>
         <typeAlias type="com.douleha.www.domain.model.user.User" alias="User"/>
-        <typeAlias type="com.douleha.www.domain.model.permission.Permission" alias="Authority"/>
-        <typeAlias type="com.douleha.www.domain.model.menu.Menu" alias="Menu"/>
+        <typeAlias type="com.douleha.www.domain.model.permission.Permission" alias="Permission"/>
+        <typeAlias type="com.douleha.www.domain.model.url.Url" alias="Url"/>
         <typeAlias type="com.douleha.www.domain.model.menutype.MenuType" alias="MenuType"/>
+        <typeAlias type="com.douleha.www.domain.model.menugroup.MenuGroup" alias="MenuGroup"/>
+        <typeAlias type="com.douleha.www.domain.model.menuangular.MenuAngular" alias="MenuAngular"/>
+        <typeAlias type="com.douleha.www.domain.model.menuapp.MenuApp" alias="MenuApp"/>
 
         <!-- handler -->
         <typeAlias type="org.apache.ibatis.type.EnumOrdinalTypeHandler" alias="EnumOrdinalTypeHandler"/>

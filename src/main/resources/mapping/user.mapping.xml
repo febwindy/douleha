@@ -4,53 +4,53 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.douleha.www.persistence.mybatis.mapper.IUserMapper">
     <select id="findById" resultType="User">
-        select * from douleha_user where userid = #{userId}
+        select * from douleha_user where id = #{id}
     </select>
 
-    <resultMap id="authorityMap" type="Authority">
-        <id column="authority_id" property="authorityId"/>
-        <result column="authority_name" property="authorityName"/>
-        <result column="authority_disabled" property="disabled" typeHandler="EnumOrdinalTypeHandler"/>
+    <resultMap id="permissionMap" type="Permission">
+        <id column="permission_id" property="id"/>
+        <result column="permission_name" property="name"/>
+        <result column="permission_disabled" property="disabled" typeHandler="EnumOrdinalTypeHandler"/>
     </resultMap>
     <resultMap id="roleMap" type="Role">
-        <id column="role_id" property="roleId"/>
-        <result column="role_name" property="roleName"/>
+        <id column="role_id" property="id"/>
+        <result column="role_name" property="name"/>
         <result column="role_disabled" property="disabled" typeHandler="EnumOrdinalTypeHandler"/>
-        <collection property="authorities" resultMap="authorityMap"/>
+        <collection property="permissions" resultMap="permissionMap"/>
     </resultMap>
     <resultMap id="usernameMap" type="User">
         <id column="user_id" property="userId"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
-        <result column="salt" property="salt"/>
         <result column="nickname" property="nickname"/>
+        <result column="salt" property="salt"/>
         <collection property="roles" resultMap="roleMap"/>
     </resultMap>
     <select id="findByUsername" resultMap="usernameMap">
         SELECT
-            u.user_id,
+            u.id,
             u.username,
             u.`password`,
-            u.salt,
             u.nickname,
-            r.role_id,
-            r.role_name,
+            u.salt,
+            r.id AS role_id,
+            r.name AS role_name,
             r.disabled AS role_disabled,
-            a.authority_id,
-            a.authority_name,
-            a.disabled AS authority_disabled
+            p.id AS permission_id,
+            p.name AS permission_name,
+            p.disabled AS permission_disabled
         FROM
             douleha_user u
-        LEFT JOIN douleha_user_role ur ON u.user_id = ur.user_id
-        LEFT JOIN douleha_role r ON ur.role_id = r.role_id
-        LEFT JOIN douleha_role_authority ra ON ra.role_id = r.role_id
-        LEFT JOIN douleha_authority a ON a.authority_id = ra.authority_id
+        LEFT JOIN douleha_user_role ur ON u.id = ur.user_id
+        LEFT JOIN douleha_role r ON ur.role_id = r.id
+        LEFT JOIN douleha_role_permission rp ON rp.role_id = r.id
+        LEFT JOIN douleha_permission p ON p.id = rp.permission_id
         WHERE
             u.username = #{username}
     </select>
 
-    <insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="user_id">
-        insert into douleha_user (user_id, username, password, salt, nickname, real_name, sex)
-                VALUES (#{userId}, #{username}, #{password}, #{salt}, #{nickname}, #{realName}, #{sex})
+    <insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into douleha_user (id, username, password, salt, nickname, real_name, sex)
+                VALUES (#{id}, #{username}, #{password}, #{salt}, #{nickname}, #{realName}, #{sex})
     </insert>
 </mapper>

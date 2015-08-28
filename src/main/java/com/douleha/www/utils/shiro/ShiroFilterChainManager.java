@@ -3,7 +3,7 @@ package com.douleha.www.utils.shiro;
 import com.douleha.www.domain.model.permission.Permission;
 import com.douleha.www.domain.model.role.Role;
 import com.douleha.www.domain.model.url.Url;
-import com.douleha.www.domain.service.authority.IAuthorityService;
+import com.douleha.www.domain.service.permission.IPermissionService;
 import com.douleha.www.utils.type.model.Disabled;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.web.filter.mgt.NamedFilterList;
@@ -23,7 +23,7 @@ public class ShiroFilterChainManager {
     private CustomDefaultFilterChainManager filterChainManager;
 
     @Autowired
-    private IAuthorityService authorityService;
+    private IPermissionService authorityService;
 
     private Map<String, NamedFilterList> defaultFilterChains;
 
