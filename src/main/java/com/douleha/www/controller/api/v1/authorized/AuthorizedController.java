@@ -1,4 +1,4 @@
-package com.douleha.www.controller.api.v1;
+package com.douleha.www.controller.api.v1.authorized;
 
 import com.douleha.www.application.auth.IAuthAppService;
 import com.douleha.www.application.auth.command.LoginCommand;

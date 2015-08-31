@@ -29,14 +29,22 @@ public abstract class BaseApiController {
         return messageSource.getMessage(code, params, locale);
     }
 
+    protected void convertToReadableForApiResponse(ApiResponse response) {
+        this.convertToReadableForApiResponse(response, null);
+    }
+
     /**
      * 由于ApiResponse中的name值配置在message.properties中,因此通过此方法可解析出用记可以理解的内容
      * @param response
      */
-    protected void convertToReadableForApiResponse(ApiResponse response) {
+    protected void convertToReadableForApiResponse(ApiResponse response, Object[] params) {
         String message = response.getMessage();
         try {
-            response.setMessage(this.getMessage(message, Locale.SIMPLIFIED_CHINESE));
+            if (null == params) {
+                response.setMessage(this.getMessage(message, Locale.SIMPLIFIED_CHINESE));
+            } else {
+                response.setMessage(this.getMessage(message, params, Locale.SIMPLIFIED_CHINESE));
+            }
         } catch (Exception e) {
             response.setMessage(message);
         }

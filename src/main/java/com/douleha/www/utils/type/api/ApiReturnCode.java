@@ -10,6 +10,7 @@ public enum ApiReturnCode {
     SUCCESS(1, "ApiReturnCode.SUCCESS"),
     ERROR(2, "ApiReturnCode.ERROR"),
     ERROR_404(404, "ApiReturnCode.ERROR_404"),
+    ERROR_405(405, "ApiReturnCode.ERROR_405"),
     ERROR_500(500, "ApiReturnCode.ERROR_500"),
 
     // auth

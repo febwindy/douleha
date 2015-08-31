@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by ivan_ on 2015/8/26.
  * 控制器增强
@@ -66,6 +68,20 @@ public class GlobalExceptionControllerAdvice extends BaseApiController {
     @ResponseBody
     public ApiResponse notFoundException(NotFoundException ex) {
         convertToReadableForApiResponse(ex.getApiResponse());
+        return ex.getApiResponse();
+    }
+
+    /**
+     * 用户发出的请求是一个不存在的方法时，服务器没有进行操作，抛出该异常，并把httpStatus置为405
+     * @param ex
+     * @return
+     */
+    @ExceptionHandler(MethodNotAllowedException.class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    @ResponseBody
+    public ApiResponse notFoundException(MethodNotAllowedException ex, HttpServletRequest request) {
+        Object[] params = new Object[]{request.getMethod()};
+        convertToReadableForApiResponse(ex.getApiResponse(), params);
         return ex.getApiResponse();
     }
 
