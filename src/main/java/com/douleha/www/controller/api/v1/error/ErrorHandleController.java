@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/v1/error")
 public class ErrorHandleController {
 
-    @RequestMapping(value = "/404", method = RequestMethod.GET)
+    @RequestMapping(value = "/404")
     @ResponseBody
     public void ERROR_404() throws Exception {
         throw new NotFoundException(new ApiResponse(ApiReturnCode.ERROR_404, ApiReturnCode.ERROR_404.getName()));
     }
 
-    @RequestMapping(value = "/405", method = RequestMethod.GET)
+    @RequestMapping(value = "/405")
     @ResponseBody
     public void ERROR_405() throws Exception {
         throw new MethodNotAllowedException(new ApiResponse(ApiReturnCode.ERROR_405, ApiReturnCode.ERROR_405.getName()));
     }
 
-    @RequestMapping(value = "/500", method = RequestMethod.GET)
+    @RequestMapping(value = "/500")
     @ResponseBody
     public void ERROR_500() throws Exception {
         throw new InternalServerException(new ApiResponse(ApiReturnCode.ERROR_500, ApiReturnCode.ERROR_500.getName()));
