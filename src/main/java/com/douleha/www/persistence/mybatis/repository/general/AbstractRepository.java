@@ -15,18 +15,8 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
     protected SqlSessionTemplate sqlSessionTemplate;
 
     @Override
-    public List<T> findAll() {
-        return this.getMapper().findAll();
-    }
-
-    @Override
-    public T findById(ID id) {
-        return (T) this.getMapper().findById(id);
-    }
-
-    @Override
-    public int save(T entity) {
-        return this.getMapper().save(entity);
+    public int add(T entity) {
+        return this.getMapper().add(entity);
     }
 
     @Override
@@ -35,8 +25,18 @@ public abstract class AbstractRepository<T, ID> implements IRepository<T, ID> {
     }
 
     @Override
-    public int delete(T entity) {
-        return this.getMapper().delete(entity);
+    public int delete(ID id) {
+        return this.getMapper().delete(id);
+    }
+
+    @Override
+    public List<T> findAll() {
+        return this.getMapper().findAll();
+    }
+
+    @Override
+    public T findById(ID id) {
+        return (T) this.getMapper().findById(id);
     }
 
     /**

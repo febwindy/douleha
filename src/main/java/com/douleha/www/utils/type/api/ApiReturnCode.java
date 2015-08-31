@@ -19,7 +19,12 @@ public enum ApiReturnCode {
     ERROR_10002(10002, "ApiReturnCode.ERROR_10002"),
     ERROR_10003(10003, "ApiReturnCode.ERROR_10003"),
     ERROR_10004(10004, "ApiReturnCode.ERROR_10004"),
-    ERROR_10005(10005, "ApiReturnCode.ERROR_10005");
+    ERROR_10005(10005, "ApiReturnCode.ERROR_10005"),
+
+    // adminUser
+    ERROR_20000(20000, "ApiReturnCode.ERROR_20000"),
+    ERROR_20001(20001, "ApiReturnCode.ERROR_20001"),
+    ERROR_20002(20002, "ApiReturnCode.ERROR_20002");
 
     ApiReturnCode(int value, String name) {
         this.value = value;

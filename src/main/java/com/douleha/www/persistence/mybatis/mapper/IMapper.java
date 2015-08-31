@@ -11,10 +11,10 @@ public interface IMapper<T, ID> {
 
     T findById(ID id);
 
-    int save(T entity);
+    int add(T entity);
 
     int update(T entity);
 
-    int delete(T entity);
+    int delete(ID id);
 
 }

@@ -7,14 +7,14 @@ import java.util.List;
  */
 public interface IRepository<T, ID> {
 
-    List<T> findAll();
+    int add(T entity);
 
-    T findById(ID id);
-
-    int save(T entity);
+    int delete(ID id);
 
     int update(T entity);
 
-    int delete(T entity);
+    List<T> findAll();
+
+    T findById(ID id);
 
 }

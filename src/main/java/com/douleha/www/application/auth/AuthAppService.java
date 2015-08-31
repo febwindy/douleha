@@ -13,6 +13,8 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -24,6 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("authAppService")
 @Transactional(propagation = Propagation.REQUIRED, readOnly = false, rollbackFor = Exception.class)
 public class AuthAppService implements IAuthAppService {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private IMappingService mappingService;
@@ -45,6 +49,7 @@ public class AuthAppService implements IAuthAppService {
             try {
                 subject.login(token);
             } catch (AuthenticationException e) {
+                logger.error(e.getMessage(), e);
                 throw new UnauthorizedException(new ApiResponse(ApiReturnCode.ERROR_10002, ApiReturnCode.ERROR_10002.getName()));
             }
         } else {

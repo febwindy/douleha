@@ -1,5 +1,6 @@
 package com.douleha.www.domain.service.user;
 
+import com.douleha.www.application.admin.user.command.AdminUserCommand;
 import com.douleha.www.domain.model.user.User;
 
 /**
@@ -7,10 +8,14 @@ import com.douleha.www.domain.model.user.User;
  */
 public interface IUserService {
 
+    int add(AdminUserCommand command);
+
+    int delete(Integer id);
+
+    int update(AdminUserCommand command);
+
     User findById(int id);
 
     User findByUsername(String username);
-
-    int insert(User user);
 
 }

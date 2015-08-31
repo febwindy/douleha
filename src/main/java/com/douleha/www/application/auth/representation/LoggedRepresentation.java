@@ -1,22 +1,24 @@
 package com.douleha.www.application.auth.representation;
 
+import com.douleha.www.utils.type.model.Sex;
+
 /**
  * Created by ivan_ on 2015/8/27.
  */
 public class LoggedRepresentation {
 
-    private Integer userId;
+    private Integer id;
     private String username;
     private String nickname;
-    private Boolean sex;
+    private Sex sex;
     private String realName;
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -35,11 +37,11 @@ public class LoggedRepresentation {
         this.nickname = nickname;
     }
 
-    public Boolean getSex() {
+    public Sex getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
+    public void setSex(Sex sex) {
         this.sex = sex;
     }
 

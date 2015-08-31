@@ -1,17 +1,15 @@
-package com.douleha.www.domain.model.user;
+package com.douleha.www.application.admin.user.command;
 
-import com.douleha.www.domain.model.role.Role;
-import com.douleha.www.utils.type.model.AbstractId;
 import com.douleha.www.utils.type.model.Sex;
 
 import java.util.Date;
-import java.util.List;
 
 /**
- * Created by ivan_ on 2015/8/14.
+ * Created by ivan_ on 2015/8/31.
  */
-public class User extends AbstractId {
+public class AdminUserCommand {
 
+    private Integer id;
     private String username;
     private String password;
     private String nickname;
@@ -20,27 +18,14 @@ public class User extends AbstractId {
     private Sex sex;
     private String lastLoginIp;
     private Date lastLoginTime;
-    private Date createdTime;
     private String remark;
 
-    private List<Role> roles;
-
-    public User() {
-        super();
+    public Integer getId() {
+        return id;
     }
 
-    public User(String username, String password, String nickname, String realName, String salt, Sex sex, String lastLoginIp, Date lastLoginTime, Date createdTime, String remark) {
-        this();
-        this.username = username;
-        this.password = password;
-        this.nickname = nickname;
-        this.realName = realName;
-        this.salt = salt;
-        this.sex = sex;
-        this.lastLoginIp = lastLoginIp;
-        this.lastLoginTime = lastLoginTime;
-        this.createdTime = createdTime;
-        this.remark = remark;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -59,14 +44,6 @@ public class User extends AbstractId {
         this.password = password;
     }
 
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
     public String getNickname() {
         return nickname;
     }
@@ -75,20 +52,28 @@ public class User extends AbstractId {
         this.nickname = nickname;
     }
 
-    public Sex getSex() {
-        return sex;
-    }
-
-    public void setSex(Sex sex) {
-        this.sex = sex;
-    }
-
     public String getRealName() {
         return realName;
     }
 
     public void setRealName(String realName) {
         this.realName = realName;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     public String getLastLoginIp() {
@@ -107,27 +92,11 @@ public class User extends AbstractId {
         this.lastLoginTime = lastLoginTime;
     }
 
-    public Date getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
     }
 }
