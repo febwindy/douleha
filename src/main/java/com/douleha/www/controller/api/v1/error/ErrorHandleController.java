@@ -7,6 +7,7 @@ import com.douleha.www.utils.type.api.ApiResponse;
 import com.douleha.www.utils.type.api.ApiReturnCode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -16,19 +17,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/v1/error")
 public class ErrorHandleController {
 
-    @RequestMapping("/404")
+    @RequestMapping(value = "/404", method = RequestMethod.GET)
     @ResponseBody
     public void ERROR_404() throws Exception {
         throw new NotFoundException(new ApiResponse(ApiReturnCode.ERROR_404, ApiReturnCode.ERROR_404.getName()));
     }
 
-    @RequestMapping("/405")
+    @RequestMapping(value = "/405", method = RequestMethod.GET)
     @ResponseBody
     public void ERROR_405() throws Exception {
         throw new MethodNotAllowedException(new ApiResponse(ApiReturnCode.ERROR_405, ApiReturnCode.ERROR_405.getName()));
     }
 
-    @RequestMapping("/500")
+    @RequestMapping(value = "/500", method = RequestMethod.GET)
     @ResponseBody
     public void ERROR_500() throws Exception {
         throw new InternalServerException(new ApiResponse(ApiReturnCode.ERROR_500, ApiReturnCode.ERROR_500.getName()));

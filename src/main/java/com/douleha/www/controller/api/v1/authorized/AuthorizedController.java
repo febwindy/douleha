@@ -12,6 +12,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -25,7 +26,7 @@ public class AuthorizedController extends BaseApiController {
     @Autowired
     private IAuthAppService authAppService;
 
-    @RequestMapping("/login")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public ApiResponse login(LoginCommand command) throws Exception {
 
@@ -42,7 +43,7 @@ public class AuthorizedController extends BaseApiController {
         return apiResponse;
     }
 
-    @RequestMapping("/logout")
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     @ResponseBody
     public ApiResponse logout() throws  Exception {
 
@@ -61,7 +62,7 @@ public class AuthorizedController extends BaseApiController {
         return apiResponse;
     }
 
-    @RequestMapping("/unauthorized")
+    @RequestMapping(value = "/unauthorized", method = RequestMethod.GET)
     @ResponseBody
     public ApiResponse unauthorized() throws Exception {
         throw new UnauthorizedException(new ApiResponse(ApiReturnCode.ERROR_10003, ApiReturnCode.ERROR_10003.getName()));
