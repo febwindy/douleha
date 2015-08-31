@@ -23,7 +23,7 @@ public class ShiroFilterChainManager {
     private CustomDefaultFilterChainManager filterChainManager;
 
     @Autowired
-    private IPermissionService authorityService;
+    private IPermissionService permissionService;
 
     private Map<String, NamedFilterList> defaultFilterChains;
 
@@ -40,7 +40,7 @@ public class ShiroFilterChainManager {
             filterChainManager.getFilterChains().putAll(defaultFilterChains);
         }
 
-        List<Permission> permissionList = authorityService.findAll();
+        List<Permission> permissionList = permissionService.findAll();
 
         //2、循环URL Filter 注册filter chain
         for (Permission permission : permissionList) {
