@@ -1,9 +1,11 @@
 package com.douleha.www.application.auth.command;
 
+import com.douleha.www.utils.type.command.AbstractCommand;
+
 /**
  * Created by ivan_ on 2015/8/27.
  */
-public class LoginCommand {
+public class LoginCommand extends AbstractCommand {
 
     private String username;
     private String password;

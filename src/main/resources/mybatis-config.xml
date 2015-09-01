@@ -29,6 +29,10 @@
         <typeAlias type="com.douleha.www.domain.model.menuangular.MenuAngular" alias="MenuAngular"/>
         <typeAlias type="com.douleha.www.domain.model.menuapp.MenuApp" alias="MenuApp"/>
 
+        <!-- command -->
+        <typeAlias type="com.douleha.www.application.admin.user.command.AdminUserPaginationCommand"
+                   alias="AdminUserPaginationCommand"/>
+
         <!-- handler -->
         <typeAlias type="org.apache.ibatis.type.EnumOrdinalTypeHandler" alias="EnumOrdinalTypeHandler"/>
     </typeAliases>

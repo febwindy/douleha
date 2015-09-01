@@ -1,5 +1,8 @@
 package com.douleha.www.utils.type.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by ivan_ on 2015/8/31.
  */
@@ -14,6 +17,13 @@ public enum  Sex {
         this.value = value;
     }
 
+    private static Map<Integer, Sex> CACHE = new HashMap<Integer, Sex>(Sex.values().length * 2);
+    static {
+        for (Sex sex : Sex.values()) {
+            CACHE.put(sex.getValue(), sex);
+        }
+    }
+
     private String name;
     private int value;
 
@@ -24,4 +34,5 @@ public enum  Sex {
     public int getValue() {
         return value;
     }
+
 }

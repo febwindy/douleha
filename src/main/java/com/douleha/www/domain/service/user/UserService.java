@@ -1,9 +1,10 @@
 package com.douleha.www.domain.service.user;
 
 import com.douleha.www.application.admin.user.command.AdminUserCommand;
+import com.douleha.www.application.admin.user.command.AdminUserPaginationCommand;
 import com.douleha.www.domain.model.user.IUserRepository;
 import com.douleha.www.domain.model.user.User;
-import org.apache.commons.codec.digest.DigestUtils;
+import com.douleha.www.utils.type.model.Sex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -33,13 +35,18 @@ public class UserService implements IUserService {
         String salt = UUID.randomUUID().toString().replaceAll("-", "");
         String password = new Md5Hash(command.getPassword(), salt).toString();
 
+        Sex sex = null;
+        if (null != command.getSex() && !StringUtils.isEmpty(command.getSex())) {
+            sex = Sex.valueOf(command.getSex());
+        }
+
         User user = new User(
                 command.getUsername(),
                 password,
                 command.getNickname(),
                 command.getRealName(),
                 salt,
-                command.getSex(),
+                sex,
                 null,
                 null,
                 new Date(),
@@ -62,10 +69,15 @@ public class UserService implements IUserService {
 
         logger.info("更新用户");
 
+        Sex sex = null;
+        if (null != command.getSex() && !StringUtils.isEmpty(command.getSex())) {
+            sex = Sex.valueOf(command.getSex());
+        }
+
         User user = this.findById(command.getId());
         user.setNickname(command.getNickname());
         user.setRealName(command.getRealName());
-        user.setSex(command.getSex());
+        user.setSex(sex);
         user.setLastLoginIp(command.getLastLoginIp());
         user.setLastLoginTime(command.getLastLoginTime());
         user.setRemark(command.getRemark());
@@ -85,6 +97,11 @@ public class UserService implements IUserService {
         }
 
         return userRepository.update(user);
+    }
+
+    @Override
+    public List<User> pagination(AdminUserPaginationCommand command) {
+        return userRepository.pagination(command);
     }
 
     @Override

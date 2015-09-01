@@ -2,6 +2,7 @@ package com.douleha.www.controller.api.v1.admin;
 
 import com.douleha.www.application.admin.user.IAdminUserAppService;
 import com.douleha.www.application.admin.user.command.AdminUserCommand;
+import com.douleha.www.application.admin.user.command.AdminUserPaginationCommand;
 import com.douleha.www.controller.shared.BaseApiController;
 import com.douleha.www.utils.type.api.ApiResponse;
 import com.douleha.www.utils.type.api.ApiReturnCode;
@@ -56,8 +57,10 @@ public class AdminUserController extends BaseApiController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
-    public ApiResponse selects() throws Exception {
-        return new ApiResponse(ApiReturnCode.ERROR_10000, "查询所有成功");
+    public ApiResponse selects(AdminUserPaginationCommand command) throws Exception {
+        ApiResponse apiResponse = adminUserAppService.selects(command);
+        convertToReadableForApiResponse(apiResponse);
+        return apiResponse;
     }
 
 }

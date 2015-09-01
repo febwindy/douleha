@@ -1,13 +1,13 @@
 package com.douleha.www.application.admin.user.command;
 
-import com.douleha.www.utils.type.model.Sex;
+import com.douleha.www.utils.type.command.AbstractCommand;
 
 import java.util.Date;
 
 /**
  * Created by ivan_ on 2015/8/31.
  */
-public class AdminUserCommand {
+public class AdminUserCommand extends AbstractCommand {
 
     private Integer id;
     private String username;
@@ -15,7 +15,7 @@ public class AdminUserCommand {
     private String nickname;
     private String realName;
     private String salt;
-    private Sex sex;
+    private String sex;
     private String lastLoginIp;
     private Date lastLoginTime;
     private String remark;
@@ -68,11 +68,11 @@ public class AdminUserCommand {
         this.salt = salt;
     }
 
-    public Sex getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Sex sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

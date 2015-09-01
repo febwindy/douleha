@@ -106,7 +106,37 @@
         <result column="remark" property="remark"/>
     </resultMap>
     <select id="findById" resultMap="userIdMap" parameterType="java.lang.Integer">
-        select * from douleha_user where id = #{id}
+        SELECT * FROM douleha_user WHERE id = #{id}
     </select>
     <!-- findById -->
+
+    <!-- pagination -->
+    <resultMap id="paginationMap" type="User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="real_name" property="realName"/>
+        <result column="sex" property="sex" typeHandler="EnumOrdinalTypeHandler"/>
+        <result column="last_login_ip" property="lastLoginIp"/>
+        <result column="last_login_time" property="lastLoginTime"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+    <select id="pagination" parameterType="java.util.Map" resultMap="paginationMap">
+        SELECT * FROM douleha_user
+        <trim prefix="WHERE">
+            <if test="username != null and username != ''">
+                username LIKE "%#{username}%",
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname LIKE "%#{nickname}%",
+            </if>
+            <if test="sex != null and sex != ''">
+                sex=#{sex, typeHandler=EnumOrdinalTypeHandler},
+            </if>
+        </trim>
+        LIMIT #{page},#{pageSize}
+    </select>
+    <!-- pagination -->
 </mapper>
