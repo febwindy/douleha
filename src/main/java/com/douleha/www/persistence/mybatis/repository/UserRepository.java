@@ -5,6 +5,7 @@ import com.douleha.www.domain.model.user.IUserRepository;
 import com.douleha.www.persistence.mybatis.mapper.IMapper;
 import com.douleha.www.persistence.mybatis.mapper.IUserMapper;
 import com.douleha.www.persistence.mybatis.repository.general.AbstractRepository;
+import com.douleha.www.utils.type.api.SqlOperator;
 import com.douleha.www.utils.type.model.Sex;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -41,12 +42,18 @@ public class UserRepository<User, Integer> extends AbstractRepository<User, Inte
 
         Map<String, Object> paramsMap = new HashMap<String, Object>();
 
-        if (null != command.getSex() && StringUtils.isEmpty(command.getSex())) {
+        if (null != command.getSex() && !StringUtils.isEmpty(command.getSex())) {
             paramsMap.put("sex", Sex.valueOf(command.getSex()));
         }
+        if (null != command.getUsername() && !StringUtils.isEmpty(command.getUsername())) {
+            paramsMap.put("username",
+                    SqlOperator.like(command.getUsername(), SqlOperator.Like.ANYWHERE));
+        }
+        if (null != command.getNickname() && !StringUtils.isEmpty(command.getNickname())) {
+            paramsMap.put("nickname",
+                    SqlOperator.like(command.getNickname(), SqlOperator.Like.ANYWHERE));
+        }
 
-        paramsMap.put("username", command.getUsername());
-        paramsMap.put("nickname", command.getNickname());
         paramsMap.put("page", limitPage);
         paramsMap.put("pageSize", limitPageSize);
 

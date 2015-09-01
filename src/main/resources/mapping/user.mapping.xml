@@ -125,12 +125,12 @@
 
     <select id="pagination" parameterType="java.util.Map" resultMap="paginationMap">
         SELECT * FROM douleha_user
-        <trim prefix="WHERE">
+        <trim prefix="WHERE" suffixOverrides=",">
             <if test="username != null and username != ''">
-                username LIKE "%#{username}%",
+                username LIKE #{username},
             </if>
             <if test="nickname != null and nickname != ''">
-                nickname LIKE "%#{nickname}%",
+                nickname LIKE #{nickname},
             </if>
             <if test="sex != null and sex != ''">
                 sex=#{sex, typeHandler=EnumOrdinalTypeHandler},
