@@ -5,7 +5,6 @@ import com.douleha.www.application.admin.user.command.AdminUserCommand;
 import com.douleha.www.application.admin.user.command.AdminUserPaginationCommand;
 import com.douleha.www.controller.shared.BaseApiController;
 import com.douleha.www.utils.type.api.ApiResponse;
-import com.douleha.www.utils.type.api.ApiReturnCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
