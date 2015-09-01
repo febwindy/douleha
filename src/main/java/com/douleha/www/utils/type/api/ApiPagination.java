@@ -9,17 +9,17 @@ public class ApiPagination<T> {
 
     private int pageSize;
     private int page;
-    private List<T> data;
+    private List<T> result;
 
     public ApiPagination() {
         super();
     }
 
-    public ApiPagination(int pageSize, int page, List<T> data) {
+    public ApiPagination(int pageSize, int page, List<T> result) {
         this();
         this.pageSize = pageSize;
         this.page = page;
-        this.data = data;
+        this.result = result;
     }
 
     public int getPageSize() {
@@ -38,11 +38,11 @@ public class ApiPagination<T> {
         this.page = page;
     }
 
-    public List<T> getData() {
-        return data;
+    public List<T> getResult() {
+        return result;
     }
 
-    public void setData(List<T> data) {
-        this.data = data;
+    public void setResult(List<T> result) {
+        this.result = result;
     }
 }
