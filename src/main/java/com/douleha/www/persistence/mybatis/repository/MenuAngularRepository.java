@@ -18,7 +18,7 @@ public class MenuAngularRepository extends AbstractRepository<MenuAngular, Integ
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    protected IMapper getMapper() {
+    protected IMenuAngularMapper getMapper() {
         return sqlSessionTemplate.getMapper(IMenuAngularMapper.class);
     }
 

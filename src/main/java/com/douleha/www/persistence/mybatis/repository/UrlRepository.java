@@ -17,7 +17,7 @@ public class UrlRepository<Url, Integer> extends AbstractRepository<Url, Integer
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    protected IMapper getMapper() {
+    protected IUrlMapper getMapper() {
         return sqlSessionTemplate.getMapper(IUrlMapper.class);
     }
 

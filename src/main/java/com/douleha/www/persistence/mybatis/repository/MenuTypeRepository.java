@@ -17,7 +17,7 @@ public class MenuTypeRepository<MenuType, Integer> extends AbstractRepository<Me
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    protected IMapper getMapper() {
+    protected IMenuTypeMapper getMapper() {
         return sqlSessionTemplate.getMapper(IMenuTypeMapper.class);
     }
 }

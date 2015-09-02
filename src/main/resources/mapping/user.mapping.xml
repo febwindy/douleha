@@ -64,7 +64,7 @@
 
     <update id="update" parameterType="User">
         UPDATE douleha_user
-        <trim prefix="set">
+        <set>
             <if test="password != null and password != ''">
                 password=#{password}, salt=#{salt},
             </if>
@@ -84,10 +84,9 @@
                 sex=#{sex, typeHandler=EnumOrdinalTypeHandler},
             </if>
             <if test="remark != null and remark != ''">
-                remark=#{remark},
+                remark=#{remark}
             </if>
-            username=#{username}
-        </trim>
+        </set>
         WHERE id = #{id}
     </update>
 
@@ -125,17 +124,17 @@
 
     <select id="pagination" parameterType="java.util.Map" resultMap="paginationMap">
         SELECT * FROM douleha_user
-        <trim prefix="WHERE" suffixOverrides=",">
+        <where>
             <if test="username != null and username != ''">
-                username LIKE #{username},
+                AND username LIKE #{username}
             </if>
             <if test="nickname != null and nickname != ''">
-                nickname LIKE #{nickname},
+                AND nickname LIKE #{nickname}
             </if>
-            <if test="sex != null and sex != ''">
-                sex=#{sex, typeHandler=EnumOrdinalTypeHandler},
+            <if test="sex != null">
+                AND sex=#{sex}
             </if>
-        </trim>
+        </where>
         LIMIT #{page},#{pageSize}
     </select>
     <!-- pagination -->

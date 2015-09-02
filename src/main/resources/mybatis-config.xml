@@ -32,6 +32,8 @@
         <!-- command -->
         <typeAlias type="com.douleha.www.application.admin.user.command.AdminUserPaginationCommand"
                    alias="AdminUserPaginationCommand"/>
+        <typeAlias type="com.douleha.www.application.admin.role.command.AdminRolePaginationCommand"
+                   alias="AdminRolePaginationCommand"/>
 
         <!-- handler -->
         <typeAlias type="org.apache.ibatis.type.EnumOrdinalTypeHandler" alias="EnumOrdinalTypeHandler"/>

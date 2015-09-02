@@ -17,7 +17,7 @@ public class PermissionRepository<Authority, Integer> extends AbstractRepository
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    protected IMapper getMapper() {
+    protected IPermissionMapper getMapper() {
         return sqlSessionTemplate.getMapper(IPermissionMapper.class);
     }
 

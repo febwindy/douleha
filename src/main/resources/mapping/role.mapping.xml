@@ -3,4 +3,69 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.douleha.www.persistence.mybatis.mapper.IRoleMapper">
+
+    <insert id="add" parameterType="Role" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO douleha_role (id, name, description, disabled, sort)
+                                  VALUES (#{id}, #{name}, #{description}, #{disabled, typeHandler=EnumOrdinalTypeHandler}, #{sort})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM douleha_role WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="Role">
+        UPDATE douleha_role
+        <set>
+            <if test="name != null and name !=''">
+                name=#{name},
+            </if>
+            <if test="description != null and description != ''">
+                description=#{description},
+            </if>
+            <if test="disabled != null">
+                disabled=#{disabled, typeHandler=EnumOrdinalTypeHandler},
+            </if>
+            <if test="sort != null">
+                sort=#{sort}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <!-- findById -->
+    <resultMap id="findByIdMap" type="Role">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="disabled" property="disabled" typeHandler="EnumOrdinalTypeHandler"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+    <select id="findById" parameterType="java.lang.Integer" resultMap="findByIdMap">
+        SELECT * FROM douleha_role WHERE id=#{id}
+    </select>
+    <!-- findById -->
+
+    <!-- pagination -->
+    <resultMap id="paginationMap" type="Role">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="disabled" property="disabled" typeHandler="EnumOrdinalTypeHandler"/>
+        <result column="sort" property="sort"/>
+    </resultMap>
+
+    <select id="pagination" parameterType="java.util.Map" resultMap="paginationMap">
+        SELECT * FROM douleha_role
+        <where>
+            <if test="name != null and name != ''">
+                AND name LIKE #{name}
+            </if>
+            <if test="disabled != null">
+                AND disabled=#{disabled}
+            </if>
+        </where>
+        LIMIT #{page},#{pageSize}
+    </select>
+    <!-- pagination -->
+
 </mapper>

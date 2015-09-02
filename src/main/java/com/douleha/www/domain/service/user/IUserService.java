@@ -11,11 +11,11 @@ import java.util.List;
  */
 public interface IUserService {
 
-    int add(AdminUserCommand command);
+    void add(AdminUserCommand command);
 
-    int delete(Integer id);
+    void delete(Integer id);
 
-    int update(AdminUserCommand command);
+    void update(AdminUserCommand command);
 
     List<User> pagination(AdminUserPaginationCommand command);
 

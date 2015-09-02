@@ -1,17 +1,16 @@
-package com.douleha.www.application.admin.role.command;
+package com.douleha.www.application.admin.role.representation;
 
-import com.douleha.www.utils.type.command.AbstractCommand;
 import com.douleha.www.utils.type.model.Disabled;
 
 /**
- * Created by ivan_ on 2015/9/1.
+ * Created by ivan_ on 2015/9/2.
  */
-public class AdminRoleCommand extends AbstractCommand {
+public class AdminRoleRepresentation {
 
     private Integer id;
     private String name;
     private String description;
-    private String disabled;
+    private Disabled disabled;
     private Integer sort;
 
     public Integer getId() {
@@ -38,11 +37,11 @@ public class AdminRoleCommand extends AbstractCommand {
         this.description = description;
     }
 
-    public String getDisabled() {
+    public Disabled getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(String disabled) {
+    public void setDisabled(Disabled disabled) {
         this.disabled = disabled;
     }
 

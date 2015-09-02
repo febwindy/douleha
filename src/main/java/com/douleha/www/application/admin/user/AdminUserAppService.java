@@ -3,6 +3,7 @@ package com.douleha.www.application.admin.user;
 import com.douleha.www.application.admin.user.command.AdminUserCommand;
 import com.douleha.www.application.admin.user.command.AdminUserPaginationCommand;
 import com.douleha.www.application.admin.user.representation.AdminUserRepresentation;
+import com.douleha.www.controller.exception.InternalServerException;
 import com.douleha.www.controller.exception.InvalidRequestException;
 import com.douleha.www.controller.exception.NotFoundException;
 import com.douleha.www.domain.model.user.User;
@@ -40,17 +41,15 @@ public class AdminUserAppService implements IAdminUserAppService {
     @Override
     public ApiResponse add(AdminUserCommand command) {
 
-        ApiResponse apiResponse;
-
-        if (null == command.getUsername() || StringUtils.isEmpty(command.getUsername())) {
+        if (StringUtils.isEmpty(command.getUsername())) {
             throw new InvalidRequestException(new ApiResponse(ApiReturnCode.ERROR_20000, ApiReturnCode.ERROR_20000.getName()));
         }
 
-        if (null == command.getPassword() || StringUtils.isEmpty(command.getPassword())) {
+        if (StringUtils.isEmpty(command.getPassword())) {
             throw new InvalidRequestException(new ApiResponse(ApiReturnCode.ERROR_20001, ApiReturnCode.ERROR_20001.getName()));
         }
 
-        if (null == command.getNickname() || StringUtils.isEmpty(command.getNickname())) {
+        if (StringUtils.isEmpty(command.getNickname())) {
             throw new InvalidRequestException(new ApiResponse(ApiReturnCode.ERROR_20002, ApiReturnCode.ERROR_20002.getName()));
         }
 
@@ -64,43 +63,44 @@ public class AdminUserAppService implements IAdminUserAppService {
 
         try {
             userService.add(command);
-            apiResponse = new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName());
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             throw new InvalidRequestException(new ApiResponse(ApiReturnCode.ERROR, ApiReturnCode.ERROR.getName()));
         }
 
-        return apiResponse;
+        return new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName());
     }
 
     @Override
     public ApiResponse delete(Integer id) {
 
-        ApiResponse apiResponse;
         try {
             userService.delete(id);
-            apiResponse = new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName());
+        } catch (NotFoundException e) {
+            logger.warn(e.getMessage(), e);
+            throw new NotFoundException(new ApiResponse(ApiReturnCode.ERROR_404, ApiReturnCode.ERROR_404.getName()));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            throw new NotFoundException(new ApiResponse(ApiReturnCode.ERROR_404, ApiReturnCode.ERROR_404.getName()));
+            throw new NotFoundException(new ApiResponse(ApiReturnCode.ERROR_500, ApiReturnCode.ERROR_500.getName()));
         }
 
-        return apiResponse;
+        return new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName());
     }
 
     @Override
     public ApiResponse update(AdminUserCommand command) {
 
-        ApiResponse apiResponse;
         try {
             userService.update(command);
-            apiResponse = new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName());
+        } catch (NotFoundException e) {
+            logger.warn(e.getMessage(), e);
+            throw new NotFoundException(new ApiResponse(ApiReturnCode.ERROR_404, ApiReturnCode.ERROR_404.getName()));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             throw new InvalidRequestException(new ApiResponse(ApiReturnCode.ERROR, ApiReturnCode.ERROR.getName()));
         }
 
-        return apiResponse;
+        return new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName());
     }
 
     @Override
@@ -112,6 +112,9 @@ public class AdminUserAppService implements IAdminUserAppService {
 
             AdminUserRepresentation representation = mappingService.map(user, AdminUserRepresentation.class, false);
             apiResponse = new ApiResponse(ApiReturnCode.SUCCESS, ApiReturnCode.SUCCESS.getName(), representation);
+        } catch (NotFoundException e) {
+            logger.warn(e.getMessage(), e);
+            throw new NotFoundException(new ApiResponse(ApiReturnCode.ERROR_404, ApiReturnCode.ERROR_404.getName()));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             throw new NotFoundException(new ApiResponse(ApiReturnCode.ERROR_404, ApiReturnCode.ERROR_404.getName()));
