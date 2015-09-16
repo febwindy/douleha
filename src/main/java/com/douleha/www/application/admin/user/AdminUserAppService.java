@@ -3,7 +3,6 @@ package com.douleha.www.application.admin.user;
 import com.douleha.www.application.admin.user.command.AdminUserCommand;
 import com.douleha.www.application.admin.user.command.AdminUserPaginationCommand;
 import com.douleha.www.application.admin.user.representation.AdminUserRepresentation;
-import com.douleha.www.controller.exception.InternalServerException;
 import com.douleha.www.controller.exception.InvalidRequestException;
 import com.douleha.www.controller.exception.NotFoundException;
 import com.douleha.www.domain.model.user.User;

@@ -1,7 +1,5 @@
 package com.douleha.www.application.admin.url.command;
 
-import com.douleha.www.utils.type.model.Disabled;
-
 /**
  * Created by ivan_ on 2015/9/16.
  */

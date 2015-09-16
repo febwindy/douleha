@@ -2,7 +2,6 @@ package com.douleha.www.persistence.mybatis.repository;
 
 import com.douleha.www.domain.model.menuapp.IMenuAppRepository;
 import com.douleha.www.domain.model.menuapp.MenuApp;
-import com.douleha.www.persistence.mybatis.mapper.IMapper;
 import com.douleha.www.persistence.mybatis.mapper.IMenuAppMapper;
 import com.douleha.www.persistence.mybatis.repository.general.AbstractRepository;
 import org.slf4j.Logger;

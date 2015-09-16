@@ -1,7 +1,6 @@
 package com.douleha.www.persistence.mybatis.repository;
 
 import com.douleha.www.domain.model.permission.IPermissionRepository;
-import com.douleha.www.domain.model.permission.Permission;
 import com.douleha.www.persistence.mybatis.mapper.IPermissionMapper;
 import com.douleha.www.persistence.mybatis.repository.general.AbstractRepository;
 import org.slf4j.Logger;

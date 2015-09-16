@@ -1,8 +1,6 @@
 package com.douleha.www.persistence.mybatis.repository;
 
 import com.douleha.www.domain.model.role.IRoleRepository;
-import com.douleha.www.domain.model.role.Role;
-import com.douleha.www.persistence.mybatis.mapper.IMapper;
 import com.douleha.www.persistence.mybatis.mapper.IRoleMapper;
 import com.douleha.www.persistence.mybatis.repository.general.AbstractRepository;
 import org.slf4j.Logger;

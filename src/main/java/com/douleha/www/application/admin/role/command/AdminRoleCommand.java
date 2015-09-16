@@ -1,7 +1,6 @@
 package com.douleha.www.application.admin.role.command;
 
 import com.douleha.www.utils.type.command.AbstractCommand;
-import com.douleha.www.utils.type.model.Disabled;
 
 /**
  * Created by ivan_ on 2015/9/1.
