@@ -1,6 +1,5 @@
 package com.douleha.www.domain.model.user;
 
-import com.douleha.www.application.admin.user.command.AdminUserPaginationCommand;
 import com.douleha.www.persistence.mybatis.repository.general.IRepository;
 
 import java.util.List;

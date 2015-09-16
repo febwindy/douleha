@@ -5,7 +5,6 @@ import com.douleha.www.application.admin.user.command.AdminUserPaginationCommand
 import com.douleha.www.controller.exception.NotFoundException;
 import com.douleha.www.domain.model.user.IUserRepository;
 import com.douleha.www.domain.model.user.User;
-import com.douleha.www.utils.type.api.ApiResponse;
 import com.douleha.www.utils.type.api.SqlOperator;
 import com.douleha.www.utils.type.model.Sex;
 import org.apache.commons.lang3.StringUtils;

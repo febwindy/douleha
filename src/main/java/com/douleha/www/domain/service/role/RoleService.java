@@ -5,8 +5,6 @@ import com.douleha.www.application.admin.role.command.AdminRolePaginationCommand
 import com.douleha.www.controller.exception.NotFoundException;
 import com.douleha.www.domain.model.role.IRoleRepository;
 import com.douleha.www.domain.model.role.Role;
-import com.douleha.www.utils.type.api.ApiResponse;
-import com.douleha.www.utils.type.api.ApiReturnCode;
 import com.douleha.www.utils.type.api.SqlOperator;
 import com.douleha.www.utils.type.model.Disabled;
 import org.apache.commons.lang3.StringUtils;
