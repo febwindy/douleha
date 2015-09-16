@@ -10,6 +10,6 @@ import java.util.Map;
  */
 public interface IPermissionRepository<T, ID> extends IRepository<T, ID> {
 
-    List<Permission> pagination(Map paramsMap);
+    List<T> pagination(Map paramsMap);
 
 }

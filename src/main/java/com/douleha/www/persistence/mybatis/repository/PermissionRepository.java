@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by ivan_ on 2015/8/14.
  */
 @Repository("permissionRepository")
-public class PermissionRepository<Authority, Integer> extends AbstractRepository<Authority, Integer> implements IPermissionRepository<Authority, Integer> {
+public class PermissionRepository<Permission, Integer> extends AbstractRepository<Permission, Integer> implements IPermissionRepository<Permission, Integer> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 

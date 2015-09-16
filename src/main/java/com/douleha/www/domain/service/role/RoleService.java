@@ -63,6 +63,7 @@ public class RoleService implements IRoleService {
 
     @Override
     public void update(AdminRoleCommand command) {
+
         logger.info("更新角色, id=[{}]", command.getId());
 
         Disabled disabled = null;

@@ -10,6 +10,6 @@ import java.util.Map;
  */
 public interface IRoleRepository<T, ID> extends IRepository<T, ID> {
 
-    List<Role> pagination(Map paramsMap);
+    List<T> pagination(Map paramsMap);
 
 }

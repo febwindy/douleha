@@ -26,7 +26,7 @@ public class RoleRepository<Role, Integer> extends AbstractRepository<Role, Inte
     }
 
     @Override
-    public List<com.douleha.www.domain.model.role.Role> pagination(Map paramsMap) {
+    public List<Role> pagination(Map paramsMap) {
         return getMapper().pagination(paramsMap);
     }
 }

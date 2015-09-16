@@ -1,28 +1,24 @@
-package com.douleha.www.domain.model.url;
+package com.douleha.www.application.admin.url.command;
 
-import com.douleha.www.utils.type.model.AbstractId;
 import com.douleha.www.utils.type.model.Disabled;
 
 /**
- * Created by ivan_ on 2015/8/28.
+ * Created by ivan_ on 2015/9/16.
  */
-public class Url extends AbstractId {
+public class AdminUrlCommand {
 
+    private Integer id;
     private String name;
     private String description;
-    private Disabled disabled;
+    private String disabled;
     private Integer sort;
 
-    protected Url() {
-        super();
+    public Integer getId() {
+        return id;
     }
 
-    public Url(String name, String description, Disabled disabled, Integer sort) {
-        this();
-        this.name = name;
-        this.description = description;
-        this.disabled = disabled;
-        this.sort = sort;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -41,11 +37,11 @@ public class Url extends AbstractId {
         this.description = description;
     }
 
-    public Disabled getDisabled() {
+    public String getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(Disabled disabled) {
+    public void setDisabled(String disabled) {
         this.disabled = disabled;
     }
 

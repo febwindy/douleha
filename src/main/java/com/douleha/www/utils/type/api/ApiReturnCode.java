@@ -35,7 +35,12 @@ public enum ApiReturnCode {
     // adminPermission
     ERROR_40000(40000, "ApiReturnCode.ERROR_40000"),
     ERROR_40001(40001, "ApiReturnCode.ERROR_40001"),
-    ERROR_40002(40002, "ApiReturnCode.ERROR_40002");
+    ERROR_40002(40002, "ApiReturnCode.ERROR_40002"),
+
+    // adminUrl
+    ERROR_50000(50000, "ApiReturnCode.ERROR_50000"),
+    ERROR_50001(50001, "ApiReturnCode.ERROR_50001"),
+    ERROR_50002(50002, "ApiReturnCode.ERROR_50002");
 
     ApiReturnCode(int value, String name) {
         this.value = value;
