@@ -19,6 +19,18 @@ public class Permission extends AbstractId {
     private List<Role> roles;
     private Url url;
 
+    protected Permission() {
+        super();
+    }
+
+    public Permission(String name, String description, Disabled disabled, Integer sort) {
+        this();
+        this.name = name;
+        this.description = description;
+        this.disabled = disabled;
+        this.sort = sort;
+    }
+
     public String getName() {
         return name;
     }
